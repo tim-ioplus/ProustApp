@@ -8,10 +8,9 @@
 In der Vergangenheit haben auch Erwachsene das heute bei Kindern beliebte [Freunde- oder Poesiealbum](https://de.wikipedia.org/wiki/Poesiealbum) in denen persönliche Gedanken, Weiheiten, Witze und Skizzen festgehalten wurden.
 In Marcel Proust Variante [Proust Questionnaire](https://en.wikipedia.org/wiki/Proust_Questionnaire) als einer Art Offenbarungs-Fragebogen um damit interessante Gedanken und Gespräche anzustossen und sich persönlich näher zu kommen.
 
-Heutzutage ist es für viele schwierig diese Nähe Über räumliche Distanzen, Lockdowns den stressigen Alltag aufrecht zu erhalten. Social Media schafft die Verbindung las kurzlebiges Statusupdate wird aber eher nicht dazu genutzt langlebigere und inspirierende Gedanken auszutauschen.
+Heutzutage ist es für viele schwierig diese Nähe über räumliche Distanzen, Lockdowns den stressigen Alltag aufrecht zu erhalten. Social Media schafft die Verbindung las kurzlebiges Statusupdate wird aber eher nicht dazu genutzt langlebigere und inspirierende Gedanken auszutauschen.
 
-Die Proust-App möchte es erleichtern diese Gedanken zu inspirieren, festzuhalten und zu teilen.
-uns so etwas über sihc selbst und andere zu lernen.
+Die Proust-App möchte es erleichtern diese Gedanken zu inspirieren, festzuhalten und zu teilen und so etwas über sich selbst und andere zu erfahren.
 
 ### Links
 
@@ -144,7 +143,7 @@ um so leichter interessante gespräche zu initieren.
 
 * schaltfläche mit link copy in Zwischenablage
 * Schaltfläche mit share zu Apps
-* aktualisiertes Intro 
+* aktualisiertes Intro  
 * Mock
   * ![Mockup Intro](ProustApp_Intro.png)
 
