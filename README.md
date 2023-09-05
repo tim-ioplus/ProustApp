@@ -18,8 +18,10 @@ Die Proust-App möchte dich zu interessanten Gedanken und Gesprächen anregen, u
 
 ## 3. DALL-E
 
-![Marcel Proust Portrait 1](MarcelProustPortrait1.jpeg)
-![Marcel Proust Portrait 2](MarcelProustPortrait2.jpeg)
-![Marcel Proust Portrait 3](MarcelProustPortrait3.jpeg)
-![Marcel Proust Portrait 4](MarcelProustPortrait4.jpeg)
-![Marcel Proust Portrait 5](MarcelProustPortrait5.jpeg)
+Generated some Variations of Marcel Proust Portraits: 
+
+![Marcel Proust Portrait 1](./Concept/MarcelProustPortrait1.jpeg)
+![Marcel Proust Portrait 2](./Concept/MarcelProustPortrait2.jpeg)
+![Marcel Proust Portrait 3](./Concept/MarcelProustPortrait3.jpeg)
+![Marcel Proust Portrait 4](./Concept/MarcelProustPortrait4.jpeg)
+![Marcel Proust Portrait 5](./Concept/MarcelProustPortrait5.jpeg)
