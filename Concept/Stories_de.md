@@ -58,9 +58,6 @@ Als potentieller Benutzer der 'ProustApp' möchte ich einen Eindruck davon erhal
 #### Kriterien
 
 * zeigt ein kleines portrait Bild von Proust
-  * ![proust](MarcelProustPortrait.jpeg)
-  * Quelle: https://www.behance.net/gallery/34262019/Marcel-Proust
-  * https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs-media-cache-ak0.pinimg.com%2F736x%2F45%2F5b%2F7b%2F455b7bff87c193a0fde50e9587bf74b5.jpg
 * zeigt einladend den Titel der App
   * 'Willkommen zur ProustApp'
 * zeigt kurz die Benefits der App
