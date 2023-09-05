@@ -1,8 +1,9 @@
 # README 
 
 ## en
-The Proust App wants to inspire interesting thoughts and conversations to help to get know yourself and others better.
+
+The Proust App wants to inspire interesting thoughts and conversations to help you to get know yourself and others better.
 
 ## de
 
-Die Proust-App möchte zu interessanten Gedanken und Gesprächen anregen, um sich selbst und andere besser kennen zu lernen.
+The Proust app wants to inspire you to have interesting thoughts and conversations to get to know yourself and others better.

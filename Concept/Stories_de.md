@@ -2,6 +2,7 @@
 
 ## Elevator Pitch
 
+Die Proust-App möchte dich zu interessanten Gedanken und Gesprächen anregen, um dich selbst und andere besser kennen zu lernen.
 
 ## Intro
 
