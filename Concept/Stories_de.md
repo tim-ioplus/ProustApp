@@ -23,7 +23,7 @@ Die Proust-App möchte es erleichtern diese Gedanken zu inspirieren, festzuhalte
 
 ## Persona
 
-Alle Leute die aufgrunf mangelnder Zeit, räumlicher Distanz, persönlicher Veranlagung _oder ähnliches etc_ etwas Unterstützung möchten um Nähe mit aufrecht zu erhalten oder Freundschaften weiterzuentwickeln.
+Alle Leute die aufgrund mangelnder Zeit, räumlicher Distanz, persönlicher Veranlagung _oder ähnliches etc_ etwas Unterstützung möchten um Nähe mit aufrecht zu erhalten oder Freundschaften weiterzuentwickeln.
 
 ## User Stories
 
