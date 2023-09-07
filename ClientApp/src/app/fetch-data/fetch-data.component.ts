@@ -19,5 +19,6 @@ interface WeatherForecast {
   date: string;
   temperatureC: number;
   temperatureF: number;
+  temperatureK: number;
   summary: string;
 }
