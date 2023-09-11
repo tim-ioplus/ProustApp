@@ -1,0 +1,25 @@
+<h1 id="tableLabel">Start Proust Quest</h1>
+
+<p>This component loads Quests data from the server.</p>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<table class='table table-striped' 
+aria-labelledby="tableLabel" *ngIf="quests">
+  <tbody *ngfor="let quest of quests">
+    <tr>
+      <td>{{ quest.questionId }}</td>
+      <td>{{ quest.questionAuthor }}</td>
+    </tr>
+    <tr>
+      <td>{{ quest.questionText }}</td>
+    </tr>
+    <tr>
+        <td>{{ quest.answerId }}</td>
+        <td>{{ quest.answerAuthor }}</td>
+      </tr>
+      <tr>
+        <td><input type="text" /> </td>
+      </tr>
+  </tbody>
+</table>
