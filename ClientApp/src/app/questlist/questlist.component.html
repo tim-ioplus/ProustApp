@@ -1,0 +1,21 @@
+<h1 id="tableLabel">Proust's own Questionnaire</h1>
+
+<p>This component loads Proust's Questionnaire data from the server.</p>
+
+<p *ngIf="!questlist"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="questlist">
+  <thead>
+    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
+  </thead>
+  <tbody >
+    <tr *ngFor="let quest of questlist">
+      <td>{{ quest.questionId }}</td>
+      <td>{{ quest.questionAuthor }}</td>
+      <td>{{ quest.questionText }}</td>
+      <td>{{ quest.answerId }}</td>
+      <td>{{ quest.answerAuthor }}</td>
+      <td>{{ quest.answerText }}</td>
+    </tr>
+  </tbody>
+</table>

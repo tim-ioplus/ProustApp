@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { QuestComponent } from './quest/quest.component';
-import { QuestListComponent } from './quest/questlist.component';
+import { QuestListComponent } from './questlist/questlist.component';
 
 @NgModule({
   declarations: [
