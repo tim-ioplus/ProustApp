@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "ProustApp"
+  "defaultProject": "ProustApp",
+  "cli": {
+    "analytics": false
+  }
 }
