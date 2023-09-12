@@ -2,24 +2,20 @@
 
 <p>This component loads Quests data from the server.</p>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p *ngIf="!quests"><em>Loading...</em></p>
 
-<table class='table table-striped' 
-aria-labelledby="tableLabel" *ngIf="quests">
-  <tbody *ngfor="let quest of quests">
-    <tr>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="quests">
+  <thead>
+    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let quest of quests">
       <td>{{ quest.questionId }}</td>
       <td>{{ quest.questionAuthor }}</td>
-    </tr>
-    <tr>
       <td>{{ quest.questionText }}</td>
-    </tr>
-    <tr>
-        <td>{{ quest.answerId }}</td>
-        <td>{{ quest.answerAuthor }}</td>
-      </tr>
-      <tr>
-        <td><input type="text" /> </td>
-      </tr>
+      <td>{{ quest.answerId }}</td>
+      <td>{{ quest.answerAuthor }}</td>
+      <td><input type="text" /> </td>
+    </tr>  
   </tbody>
 </table>

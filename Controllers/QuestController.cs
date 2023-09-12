@@ -9,7 +9,6 @@ public class QuestController : ControllerBase
 {
     private readonly ILogger<QuestController> _logger;
     
-
     public QuestController(ILogger<QuestController> logger)
     {
         _logger = logger;
@@ -59,6 +58,16 @@ public class QuestController : ControllerBase
             quests.Add(quest);
         }
 
-        return quests;
+        var response = quests.ToArray();
+        return response;
     }
+
+    
+    [HttpPost]
+    public IActionResult Create([FromForm] Quest quest)
+    {
+        return Ok("Quest");
+    }
+
+
 }
