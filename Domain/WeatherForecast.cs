@@ -1,4 +1,4 @@
-namespace ProustApp;
+namespace ProustApp.Domain;
 
 public class WeatherForecast
 {

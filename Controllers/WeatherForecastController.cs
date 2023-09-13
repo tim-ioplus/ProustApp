@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProustApp.Domain;
 
 namespace ProustApp.Controllers;
 
