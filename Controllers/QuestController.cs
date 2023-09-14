@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProustApp.Services;
 using ProustApp.Domain;
+using System.Linq;
 
 namespace ProustApp.Controllers;
 
@@ -23,23 +24,20 @@ public class QuestController : ControllerBase
         var questions = new QuestService().GetQuestions(1);
         
         int questionCount = 0;
-        foreach(var question in questions)
-        {
-            var quest = new Quest
-            {
-                Id = 1,
-                QuestionId = question.Key,
-                QuestionAuthor = "Marcel Proust",
-                QuestionText = question.Value,
 
-                AnswerId = questionCount,
-                AnswerAuthor = "You",
-                AnswerText = ""
-            };
+        quests.AddRange(from question in questions
+                        let quest = new Quest
+                        {
+                            Id = 1,
+                            QuestionId = question.Key,
+                            QuestionAuthor = "Marcel Proust",
+                            QuestionText = question.Value,
 
-            quests.Add(quest);
-        }
-
+                            AnswerId = questionCount,
+                            AnswerAuthor = "You",
+                            AnswerText = ""
+                        }
+                        select quest);
         var response = quests.ToArray();
         return response;
     }
