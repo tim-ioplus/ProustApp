@@ -25,15 +25,17 @@ public class QuestController : ControllerBase
         int questionCount = 0;
         foreach(var question in questions)
         {
-            var quest = new Quest();
-            quest.Id = 1;
-            quest.QuestionId = question.Key;
-            quest.QuestionAuthor = "Marcel Proust";
-            quest.QuestionText = question.Value;
+            var quest = new Quest
+            {
+                Id = 1,
+                QuestionId = question.Key,
+                QuestionAuthor = "Marcel Proust",
+                QuestionText = question.Value,
 
-            quest.AnswerId = questionCount;
-            quest.AnswerAuthor = "You";
-            quest.AnswerText = "";
+                AnswerId = questionCount,
+                AnswerAuthor = "You",
+                AnswerText = ""
+            };
 
             quests.Add(quest);
         }

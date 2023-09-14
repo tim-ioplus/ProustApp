@@ -4,18 +4,21 @@
 
 <p *ngIf="!questlist"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="questlist">
-  <thead>
-    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
-  </thead>
-  <tbody >
-    <tr *ngFor="let quest of questlist">
-      <td>{{ quest.questionId }}</td>
-      <td>{{ quest.questionAuthor }}</td>
-      <td>{{ quest.questionText }}</td>
-      <td>{{ quest.answerId }}</td>
-      <td>{{ quest.answerAuthor }}</td>
-      <td>{{ quest.answerText }}</td>
-    </tr>
-  </tbody>
-</table>
+<hr>
+<form>
+  <fieldset>
+    <!-- @todo Titel und Author als parm-->
+    <legend>Prousts own Questionnaire</legend>
+    <div style="margin-top:24px;" *ngFor="let quest of questlist">
+      <h4><label for="question-text">{{ quest.questionId }}. Question: </label></h4>
+      <p>{{ quest.questionText }}</p>
+      <!-- <input name="question-text" type="" placeholder="" value="{{quest.questionText}}" style="margin-left:6px;width:fit-content;" readonly> -->
+      <h4><label for="answer-text">Answer</label></h4>
+      <input name="answer-text" type="" placeholder="" value="{{quest.answerText}}" style="margin-left:12px;width:80%;" readonly>
+    </div>
+    <div style="margin-top:24px; margin-bottom:24px;">
+      <!--<input name="submit" type="submit" value="submit">-->
+    </div>
+  </fieldset>
+</form>
+<hr>
