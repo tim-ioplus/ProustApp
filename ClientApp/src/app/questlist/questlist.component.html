@@ -10,11 +10,9 @@
     <!-- @todo Titel und Author als parm-->
     <legend>Prousts own Questionnaire</legend>
     <div style="margin-top:24px;" *ngFor="let quest of questlist">
-      <h4><label for="question-text">{{ quest.questionId }}. Question: </label></h4>
-      <p>{{ quest.questionText }}</p>
-      <!-- <input name="question-text" type="" placeholder="" value="{{quest.questionText}}" style="margin-left:6px;width:fit-content;" readonly> -->
-      <h4><label for="answer-text">Answer</label></h4>
-      <input name="answer-text" type="" placeholder="" value="{{quest.answerText}}" style="margin-left:12px;width:80%;" readonly>
+      <label for="question-text">{{ quest.questionId }}. {{ quest.questionText }}</label><br>
+      <label for="answer-text">Answer:</label><br>
+      <textarea readonly name="answer-text" type="" placeholder="" value="{{quest.answerText}}" style="margin-left:12px;width:80%;" readonly></textarea>
     </div>
     <div style="margin-top:24px; margin-bottom:24px;">
       <!--<input name="submit" type="submit" value="submit">-->
