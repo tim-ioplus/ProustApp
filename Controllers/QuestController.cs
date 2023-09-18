@@ -44,7 +44,8 @@ public class QuestController : ControllerBase
 
     
     [HttpPost]
-    public IActionResult Create([FromForm] Quest quest)
+    //public IActionResult Post([FromForm] Quest quest)
+    public IActionResult Post([FromForm] Quest[] quests)
     {
         return Ok("Quest");
     }
