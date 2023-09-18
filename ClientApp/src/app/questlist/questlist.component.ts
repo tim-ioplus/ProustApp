@@ -16,24 +16,8 @@ import { HttpClient } from '@angular/common/http';
         http.get<Quest[]>(fullurl).subscribe(result => 
         {            
             this.questlist = result;
-            console.log('questlist result:');
-            console.log(result);
-            console.log(result[0]);
-            console.log(result[1]);
         }, 
         error => console.error(error));
-        console.log(fullurl);
-        console.log('this.questlist:');
-        console.log(this.questlist);
-
-        http.get<object[]>(fullurl).subscribe(resultObj => 
-            {            
-                console.log('questlist resultObj:');
-                console.log(resultObj);
-                console.log(resultObj[0]);
-                console.log(resultObj[1]);
-            }, 
-            error => console.error(error));
     }
  }
 
