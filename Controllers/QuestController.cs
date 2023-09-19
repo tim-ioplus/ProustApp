@@ -44,11 +44,20 @@ public class QuestController : ControllerBase
 
     
     [HttpPost]
-    //public IActionResult Post([FromForm] Quest quest)
-    public IActionResult Post([FromForm] Quest[] quests)
+    public IActionResult Post([FromBody] QuestData questData)
     {
-        return Ok("Quest");
+        if(questData?.Quests?.Count > 0)
+        {
+            return Ok("Quest");
+        }
+        else
+        {
+            return NoContent();
+        }        
     }
+}
 
-
+public class QuestData
+{
+    public List<Quest>? Quests {get; set;}
 }

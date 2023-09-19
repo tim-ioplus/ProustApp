@@ -8,8 +8,7 @@ import { Observable } from 'rxjs';
  })
  
  export class QuestComponent
- {
-    
+ {    
     public quests: Quest[] = [];
     public mybaseUrl = 'BASE_URL';
     http: any;
@@ -18,32 +17,45 @@ import { Observable } from 'rxjs';
     {
         this.mybaseUrl = baseUrl;
    
-        httpc.get<Quest[]>(baseUrl+ 'quest').subscribe(result => 
+        httpc.get<Quest[]>(baseUrl+ 'quest')
+        .subscribe(result => 
         {
             this.quests = result;
-        }, error => console.error(error));
+        }, 
+        error => console.error(error));
 
         this.http = httpc;
     }
 
-    onSubmit():void {
-        // Observable<any>
-        //const headers = { 'content-type': 'application/json'};
+    onSubmit():void 
+    {
         var newquests = this.GetQuest();  
-        console.log(newquests);//JSON.stringify());
+        console.log(newquests);
         var url = this.mybaseUrl + 'quest';
 
-        this.http.post(url, newquests).subscribe((result: any) => {
+        this.http.post(url, newquests)
+        .subscribe(
+            (result: any) => 
+            {
             console.log(result);
             alert('success');
-        }, (error: any) => console.log(error));
+            }, 
+            (error: any) => 
+                console.log(error)
+        );
     }
 
 
     GetQuest(): any
     {
+        var questData : any = {
+            quests: [{
+                id: 0, 
+                questionId: 0, questionAuthor: '', questionText: '', 
+                answerId: 0, answerAuthor: '', answerText: ''
+            }],
+          };
         
-        var newQuests: Quest[] = [];
         var answers = document.getElementsByName('answer-text');
         var questions = document.getElementsByName('question-text');
         var inputQuestionAuthor = '';
@@ -51,20 +63,19 @@ import { Observable } from 'rxjs';
                 
         for (let index = 0; index < answers.length; index++)
         {
-            var element = <HTMLTextAreaElement>answers[index];
+            var answerElement = <HTMLTextAreaElement>answers[index];
 
             var newquest : Quest = 
             {
                 id: 0, 
                 questionId: index, questionAuthor: inputQuestionAuthor, questionText: '', 
-                answerId: 0, answerAuthor: inputAnswerAuthor, answerText: element.value
+                answerId: 0, answerAuthor: inputAnswerAuthor, answerText: answerElement.value
             };
 
-            console.log(newquest);
-            newQuests[index] = newquest;
+            questData.quests.push(newquest);
         }
 
-        return newQuests;
+        return questData;
     }
 }
 
