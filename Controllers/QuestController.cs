@@ -42,6 +42,15 @@ public class QuestController : ControllerBase
         return response;
     }
 
+
+    [HttpGet]
+    public IEnumerable<Quest> Get(int id)
+    {        
+        var quests = new QuestService().Get(id);
+        
+        return quests;
+    }
+
     
     [HttpPost]
     public IActionResult Post([FromBody] QuestData questData)
