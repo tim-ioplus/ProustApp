@@ -9,8 +9,12 @@
   <fieldset>
     <!-- @todo Titel und Author als parm-->
     <legend>Prousts own Questionnaire</legend>
+    <div style="">
+      
+    </div>
     <div style="margin-top:24px;" *ngFor="let quest of quests">
       <label for="question-text">{{ quest.questionId }}. {{ quest.questionText }}</label><br>
+      <label for="answer-author">Name:</label><input type="text" name="answer-author" value="{{quest.answerAuthor}}"/><br>
       <label for="answer-text">Answer:</label><br>
       <textarea name="answer-text" type="" placeholder="" value="{{quest.answerText}}" style="margin-left:12px;width:80%;"></textarea>
     </div>

@@ -2,6 +2,7 @@ import { Component, Inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {Router} from '@angular/router';
 @Component({
     selector: 'app-quest',
     templateUrl: './quest.component.html'
@@ -12,10 +13,12 @@ import { Observable } from 'rxjs';
     public quests: Quest[] = [];
     public mybaseUrl = 'BASE_URL';
     http: any;
+    router: Router;
     
-    constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string)
+    constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string, private routerc: Router)
     {
         this.mybaseUrl = baseUrl;
+        this.router = routerc;
    
         httpc.get<Quest[]>(baseUrl+ 'quest')
         .subscribe(result => 
@@ -37,12 +40,21 @@ import { Observable } from 'rxjs';
         .subscribe(
             (result: any) => 
             {
-            console.log(result);
-            alert('success');
+                console.log("Success   " + result);
+                var redirectId = result[0] != null ? result[0] : '';
+                if(redirectId != null && redirectId != '')
+                {
+                    this.Redirect(redirectId);
+                }                            
             }, 
             (error: any) => 
                 console.log(error)
         );
+    }
+
+    Redirect(redirectId: string): void
+    {
+        this.router.navigate(['quests', redirectId]);
     }
 
 

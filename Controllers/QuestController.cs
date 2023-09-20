@@ -48,7 +48,8 @@ public class QuestController : ControllerBase
     {
         if(questData?.Quests?.Count > 0)
         {
-            return Ok("Quest");
+            var questDataId = new QuestService().Create(questData.Quests);
+            return Ok("{questDataId:"+ questDataId +"}");
         }
         else
         {

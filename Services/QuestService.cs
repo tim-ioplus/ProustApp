@@ -5,6 +5,18 @@ using ProustApp.Domain;
 namespace ProustApp.Services;
 public class QuestService 
 {
+    public string Create(List<Quest> quests)
+    {
+        var questId = "";
+
+        if(quests != null)
+        {
+            questId = Guid.NewGuid().ToString();
+            
+        }
+
+        return questId;
+    }
     public List<Quest>? Get(int questionnaireId = 1, int userId=1)
     {
         var quests = new List<Quest>();
