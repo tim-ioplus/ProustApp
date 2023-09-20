@@ -11,12 +11,59 @@ public class QuestService
 
         if(quests != null)
         {
-            questId = Guid.NewGuid().ToString();
-            
+            questId = new QuestRepository().Create(quests);
+
         }
 
         return questId;
     }
+
+    public Quest? Read(int questionnaireId)
+    {
+        var quest = new Quest();
+
+        if(questionnaireId > 0)
+        {
+            quest = new QuestRepository().Read(questionnaireId);
+            return quest;
+        }
+        else
+        {
+            return null;
+        }     
+    } 
+
+    public bool Update(Quest quest)
+    {
+        var result = false;
+
+        if(quest != null)
+        {
+            result = new QuestRepository().Update(quest);
+        }
+
+        return result;
+    }
+
+
+    public bool Delete(int questId)
+    {
+        var result = false;
+
+        if(questId > 0)
+        {
+            result = new QuestRepository().Delete(questId);
+        }
+
+        return result;
+    }
+
+    public List<Quest> List(int take=0, int skip=0)
+    {
+        var quests = new QuestRepository().List(take, skip);
+        return quests;
+    }
+    
     public List<Quest>? Get(int questionnaireId = 1, int userId=1)
     {
         var quests = new List<Quest>();
@@ -46,7 +93,8 @@ public class QuestService
 
         return quests;
     }
-    
+
+
     public Dictionary<int, string>? GetQuestions(int questionnaireId = 1)
     {
         if(questionnaireId==1)
