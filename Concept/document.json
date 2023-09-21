@@ -1,0 +1,14 @@
+{
+    "Questionnaire":
+    {
+      "id":0,
+      "SurveyAuthor":"",
+      "SurveyTitle": "",
+      "ResponseAuthor":"",
+      "Survey":
+      [{
+        "Question": "Fragetext",
+        "Answer": "Antworttext"
+      }]    
+    }
+  }
