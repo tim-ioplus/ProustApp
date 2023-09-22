@@ -17,11 +17,11 @@ public class QuestListController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Quest> Get()
+    public Questionnaire Get()
     {
         var quests = new QuestService().Get(1,1);
 
-        var response = quests?.ToArray();
+        var response = quests;
         return response;
         
     }

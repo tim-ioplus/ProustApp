@@ -18,46 +18,44 @@ public class QuestController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Quest> Get()
+    public Questionnaire Get()
     {        
-        var quests = new List<Quest>();
-        var questions = new QuestService().GetQuestions(1);
+        var questionnaire = new QuestService().Get(1);
         
-        int questionCount = 0;
+        #region  @todo remove when template loaded from DB 
 
-        quests.AddRange(from question in questions
-                        let quest = new Quest
-                        {
-                            Id = 1,
-                            QuestionId = question.Key,
-                            QuestionAuthor = "Marcel Proust",
-                            QuestionText = question.Value,
+        var questions = new Dictionary<string, string>(); 
+        if(questionnaire != null && questionnaire.Dialogs != null)
+        {
+            foreach (var item in questionnaire.Dialogs)
+            {
+                questions.Add(item.Key, "");                
+            }
 
-                            AnswerId = questionCount,
-                            AnswerAuthor = "You",
-                            AnswerText = ""
-                        }
-                        select quest);
-        var response = quests.ToArray();
-        return response;
+            questionnaire.Dialogs = questions;
+        }
+        
+        #endregion
+
+        return questionnaire;
     }
 
 
     [HttpGet]
-    public IEnumerable<Quest> Get(int id)
+    public Questionnaire Get(int id)
     {        
-        var quests = new QuestService().Get(id);
+        var questionnaire = new QuestService().Get(id);
         
-        return quests;
+        return questionnaire;
     }
 
     
     [HttpPost]
-    public IActionResult Post([FromBody] QuestData questData)
+    public IActionResult Post([FromBody] Questionnaire questData)
     {
-        if(questData?.Quests?.Count > 0)
+        if(questData?.Dialogs?.Count > 0)
         {
-            var questDataId = new QuestService().Create(questData.Quests);
+            var questDataId = new QuestService().Create(questData);
             return Ok("{questDataId:"+ questDataId +"}");
         }
         else

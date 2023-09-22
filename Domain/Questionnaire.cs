@@ -7,7 +7,7 @@ namespace ProustApp.Domain;
 public class Questionnaire
 {
     /// <summary>
-    /// UNique Identifier for Questionnaire
+    /// Unique Identifier for Questionnaire
     /// </summary>
     public int Id { get; set; }
     /// <summary>
@@ -25,5 +25,5 @@ public class Questionnaire
     /// <summary>
     /// Questions and correponding Answers in Key-Value Form
     /// </summary>                
-    public IDictionary<string, string>? Dialogs {get; set;}
+    public Dictionary<string, string>? Dialogs {get; set;}
 }
