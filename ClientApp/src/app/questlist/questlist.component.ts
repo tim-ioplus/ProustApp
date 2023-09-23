@@ -7,27 +7,35 @@ import { HttpClient } from '@angular/common/http';
  })
  export class QuestListComponent
  {
-    public questlist: Quest[] = [];
+    public questionnaire: Questionnaire = 
+    {
+        id: 0,
+        author: '',
+        topic: '',
+        responseAuthor: '',
+        dialogs: {}    
+     }
     
     constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
     {
         // @Todo replace subscribe with observable
         var fullurl = baseUrl+ 'questlist';
-        http.get<Quest[]>(fullurl).subscribe(result => 
+        http.get<Questionnaire>(fullurl).subscribe(result => 
         {            
-            this.questlist = result;
+            this.questionnaire = result;
         }, 
         error => console.error(error));
     }
  }
 
- interface Quest
+ interface Questionnaire
  {
-    answerAuthor: string,
-    answerId: number,
-    answerText: string,
-    id: number,
-    questionAuthor: string,
-    questionId: number,
-    questionText: string    
+    id: number, 
+    author: string,
+    topic: string,
+    responseAuthor: string,
+    dialogs: object
  }
+
+
+

@@ -2,10 +2,10 @@
     "Questionnaire":
     {
       "id":0,
-      "SurveyAuthor":"",
-      "SurveyTitle": "",
+      "Author":"",
+      "Topic": "",
       "ResponseAuthor":"",
-      "Survey":
+      "Dialogs":
       [{
         "Question": "Fragetext",
         "Answer": "Antworttext"
