@@ -101,3 +101,14 @@ import {Router} from '@angular/router';
     answerAuthor: string,
     answerText: string
  }
+
+ interface Questionnaire
+ {
+    id: number, 
+    author: string,
+    topic: string,
+    responseAuthor: string,
+    dialogs: object
+ }
+
+
