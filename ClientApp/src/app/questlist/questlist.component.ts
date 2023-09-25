@@ -30,13 +30,12 @@ import { HttpClient } from '@angular/common/http';
     public getDictionaryKeys()
     {
         var mkeys: string[] = []; 
-        console.log("dialogs" + this.questionnaire.dialogs + "\n" + "--- --- ---");
         var mkeys = Object.getOwnPropertyNames(this.questionnaire.dialogs);
-        console.log("mkeys" + mkeys + "\n" + " - - -");
         return mkeys;
     }
  }
 
+ // @todo extract in one single class
  interface Questionnaire
  {
     id: number;

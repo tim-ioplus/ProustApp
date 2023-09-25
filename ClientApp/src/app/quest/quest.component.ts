@@ -10,7 +10,15 @@ import {Router} from '@angular/router';
  
  export class QuestComponent
  {    
-    public quests: Quest[] = [];
+    public questionnaire: Questionnaire = 
+    {
+        id: 0,
+        author: '',
+        topic: '',
+        responseAuthor: '',
+        dialogs:  new Map<string, string>()  
+     }
+
     public mybaseUrl = 'BASE_URL';
     http: any;
     router: Router;
@@ -19,11 +27,12 @@ import {Router} from '@angular/router';
     {
         this.mybaseUrl = baseUrl;
         this.router = routerc;
+        var fullurl = baseUrl+ 'quest';
    
-        httpc.get<Quest[]>(baseUrl+ 'quest')
+        httpc.get<Questionnaire>(fullurl)
         .subscribe(result => 
         {
-            this.quests = result;
+            this.questionnaire = result;
         }, 
         error => console.error(error));
 
@@ -32,11 +41,11 @@ import {Router} from '@angular/router';
 
     onSubmit():void 
     {
-        var newquests = this.GetQuest();  
-        console.log(newquests);
+        var newquestionnaire = this.GetQuest();  
+        console.log(newquestionnaire);
         var url = this.mybaseUrl + 'quest';
 
-        this.http.post(url, newquests)
+        this.http.post(url, newquestionnaire)
         .subscribe(
             (result: any) => 
             {
@@ -60,55 +69,58 @@ import {Router} from '@angular/router';
 
     GetQuest(): any
     {
-        var questData : any = {
-            quests: [{
-                id: 0, 
-                questionId: 0, questionAuthor: '', questionText: '', 
-                answerId: 0, answerAuthor: '', answerText: ''
-            }],
-          };
+        var newquestionnaire: Questionnaire = 
+        {
+            id: 0,
+            author: '',
+            topic: '',
+            responseAuthor: '',
+            dialogs:  new Map<string, string>()
+        }
         
+        var questionnaireIdElement = <HTMLInputElement> document.getElementsByName('questionnaire-id')[0];
+        var questionnaireAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-author')[0];
+        var questionnaireTopicElement = <HTMLInputElement> document.getElementsByName('questionnaire-topic')[0];
+        var questionnaireResponseAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-responseauthor')[0];
+        
+        newquestionnaire.id = parseInt(questionnaireIdElement.value);
+        newquestionnaire.author = questionnaireAuthorElement.value;
+        newquestionnaire.topic = questionnaireTopicElement.value;
+        newquestionnaire.responseAuthor = questionnaireResponseAuthorElement.value;
+
         var answers = document.getElementsByName('answer-text');
         var questions = document.getElementsByName('question-text');
-        var inputQuestionAuthor = '';
-        var inputAnswerAuthor = '';
-                
+                   
         for (let index = 0; index < answers.length; index++)
         {
             var answerElement = <HTMLTextAreaElement>answers[index];
+            var answerText = answerElement.value;
 
-            var newquest : Quest = 
-            {
-                id: 0, 
-                questionId: index, questionAuthor: inputQuestionAuthor, questionText: '', 
-                answerId: 0, answerAuthor: inputAnswerAuthor, answerText: answerElement.value
-            };
+            var questionElement = <HTMLTextAreaElement>questions[index];
+            var questionText = questionElement.value;
 
-            questData.quests.push(newquest);
+            newquestionnaire.dialogs.set(questionText, answerText);
         }
 
-        return questData;
+        newquestionnaire.dialogs.get
+
+        return newquestionnaire;
+    }
+
+    public getDictionaryKeys()
+    {
+        var mkeys: string[] = []; 
+        var mkeys = Object.getOwnPropertyNames(this.questionnaire.dialogs);
+        return mkeys;
     }
 }
 
- interface Quest
+// @todo extract in one single class
+interface Questionnaire
  {
-    id: number,
-    questionId: number,
-    questionAuthor: string,
-    questionText: string,
-    answerId: number,
-    answerAuthor: string,
-    answerText: string
+    id: number;
+    author: string;
+    topic: string;
+    responseAuthor: string;
+    dialogs: Map<string, string>; //{[key: string]: string};
  }
-
- interface Questionnaire
- {
-    id: number, 
-    author: string,
-    topic: string,
-    responseAuthor: string,
-    dialogs: object
- }
-
-
