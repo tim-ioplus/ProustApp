@@ -26,15 +26,24 @@ import { HttpClient } from '@angular/common/http';
         }, 
         error => console.error(error));
     }
+
+    public getDictionaryKeys()
+    {
+        var mkeys: string[] = []; 
+        console.log("dialogs" + this.questionnaire.dialogs + "\n" + "--- --- ---");
+        var mkeys = Object.getOwnPropertyNames(this.questionnaire.dialogs);
+        console.log("mkeys" + mkeys + "\n" + " - - -");
+        return mkeys;
+    }
  }
 
  interface Questionnaire
  {
-    id: number, 
-    author: string,
-    topic: string,
-    responseAuthor: string,
-    dialogs: object
+    id: number;
+    author: string;
+    topic: string;
+    responseAuthor: string;
+    dialogs: {[key: string]: string};
  }
 
 
