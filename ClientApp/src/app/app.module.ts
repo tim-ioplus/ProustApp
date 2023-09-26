@@ -30,8 +30,13 @@ import { QuestListComponent } from './questlist/questlist.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'quest', component: QuestComponent },
-      { path: 'questlist', component: QuestListComponent }
+      { path: 'quests', component: QuestComponent },
+      { path: 'quests/create', component: QuestComponent },
+      { path: 'quests/edit:id', component: QuestComponent },
+      { path: 'quests/:id', component: QuestComponent },
+      { path: '', redirectTo: '/quests', pathMatch: 'full' },
+      // @todo Obsolete?, remove
+      //{ path: 'questlist', component: QuestListComponent }
     ])
   ],
   providers: [],
