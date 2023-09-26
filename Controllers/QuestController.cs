@@ -17,6 +17,7 @@ public class QuestController : ControllerBase
         _logger = logger;
     }
 
+    // GET /quest/
     [HttpGet]
     public Questionnaire Get()
     {        
@@ -41,7 +42,8 @@ public class QuestController : ControllerBase
     }
 
 
-    [HttpGet]
+    // GET /quest/id
+    [HttpGet("{id}")]
     public Questionnaire Get(int id)
     {        
         var questionnaire = new QuestService().Get(id);

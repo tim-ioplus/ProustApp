@@ -27,8 +27,10 @@ import {Router} from '@angular/router';
     {
         this.mybaseUrl = baseUrl;
         this.router = routerc;
-        var fullurl = baseUrl+ 'quest';
-   
+        var resourceUrl = baseUrl+ 'quest';
+        var id = document.URL.replace(resourceUrl+'/','');
+        var fullurl = resourceUrl + '/' + id;
+
         httpc.get<Questionnaire>(fullurl)
         .subscribe(result => 
         {
@@ -122,5 +124,5 @@ interface Questionnaire
     author: string;
     topic: string;
     responseAuthor: string;
-    dialogs: Map<string, string>; //{[key: string]: string};
+    dialogs: Map<string, string>; 
  }
