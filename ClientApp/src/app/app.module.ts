@@ -26,19 +26,19 @@ const routes: Routes = [
   { path: 'quest', component: QuestComponent },
   //
   // Lists new or filled out Questionnaires 
-  { path: 'quests', component: QuestionnaireListComponent },
+  { path: 'questionnaires', component: QuestionnaireListComponent },
   // 
   // View a Questionnaire, either blank or filled out
-  { path: 'quests/:id', component: QuestionnaireDetailComponent },
+  { path: 'questionnaires/:id', component: QuestionnaireDetailComponent },
   //
   // Create a new Questionnaire
-  { path: 'create', component: QuestionnaireCreateComponent },
+  { path: 'questionnaires/create', component: QuestionnaireCreateComponent },
   //
   // Edit an existing Questionnaire
-  { path: 'edit/:id', component: QuestionnaireEditComponent },
+  { path: 'questionnaires/edit/:id', component: QuestionnaireEditComponent },
   //
   // Fill out an existing Questionnaire
-  { path: 'fill/:id', component: QuestionnaireFillComponent },
+  { path: 'questionnaires/fill/:id', component: QuestionnaireFillComponent },
 ];
 
 @NgModule({
