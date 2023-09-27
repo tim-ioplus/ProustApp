@@ -14,3 +14,10 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+#app-footer
+{
+  height: 48px;
+  margin-top: 12px;
+  background-color: aqua;
+}
