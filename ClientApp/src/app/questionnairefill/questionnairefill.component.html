@@ -24,7 +24,7 @@
       <label for="question-text">Question:{{ key }}</label><br>
       <label for="answer-text">Answer:</label><br>
       <textarea readonly name="answer-text" type="" placeholder="" 
-        value="{{questionnaire.dialogs[key]}}" style="margin-left:12px;width:80%;" readonly></textarea>
+        value="{{questionnaire.dialogs.get(key)}}" style="margin-left:12px;width:80%;" readonly></textarea>
     </div>
   
     <div style="margin-top:24px; margin-bottom:24px;">

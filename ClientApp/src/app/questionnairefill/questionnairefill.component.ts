@@ -10,8 +10,22 @@ import { Questionnaire } from "../Questionnaire";
  
  export class QuestionnaireFillComponent
  {
+   public questionnaire: Questionnaire = 
+    {
+        id: 0,
+        author: '',
+        topic: '',
+        responseAuthor: '',
+        dialogs:  new Map<string, string>()  
+   }
     constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
     {
         
+    }
+    public getDictionaryKeys()
+    {
+        var mkeys: string[] = []; 
+        var mkeys = Object.getOwnPropertyNames(this.questionnaire.dialogs);
+        return mkeys;
     }
  }

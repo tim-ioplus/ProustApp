@@ -11,7 +11,7 @@ import { QuestionnaireService } from "../QuestionnaireService";
  
  export class QuestionnaireListComponent
  {
-   private questionnaires: Questionnaire[] | undefined;
+   public questionnaires: Questionnaire[] | undefined;
 
    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
    {
