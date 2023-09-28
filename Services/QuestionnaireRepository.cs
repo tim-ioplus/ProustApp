@@ -24,7 +24,7 @@ public class QuestionnaireRepository
 
         return questionnaireId;
     }
-    public Questionnaire Read(int questionnaireId)
+    public Questionnaire? Read(int questionnaireId)
     {
         Questionnaire? questionnaire = null;
         
@@ -121,7 +121,7 @@ public class QuestionnaireRepository
         return questionnaires;
     }
 
-    public Questionnaire ParseResult(IDictionary<string, string> dataResult)
+    public Questionnaire? ParseResult(IDictionary<string, string> dataResult)
     {
         var questionnaire = new Questionnaire();
 
