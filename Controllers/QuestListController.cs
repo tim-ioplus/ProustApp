@@ -19,7 +19,7 @@ public class QuestListController : ControllerBase
     [HttpGet]
     public Questionnaire Get()
     {
-        var quests = new QuestService().Get(1,1);
+        var quests = new QuestionnaireService().Get(1,1);
 
         var response = quests;
         return response;

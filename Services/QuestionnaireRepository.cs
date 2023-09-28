@@ -3,7 +3,7 @@ using System.Linq;
 using ProustApp.Domain;
 
 namespace ProustApp.Services;
-public class QuestRepository 
+public class QuestionnaireRepository 
 {
     private object _dataConnection = null;
     public string Create(object quest)
@@ -73,11 +73,16 @@ public class QuestRepository
     }
 
     
-    public List<Questionnaire> List(int take = 0, int skip = 0)
+    public List<Questionnaire> List(string filter = "", int take = 0, int skip = 0)
     {
         var quests = new List<Questionnaire>();
 
         var sql = "Select * from quests ";
+
+        if(!string.IsNullOrEmpty(filter) && filter.Equals("surveys"))
+        {
+            sql += " where ResponseAuthor='' ";
+        }
         
         if(take >0)
         {
@@ -88,7 +93,7 @@ public class QuestRepository
         {
             sql += "skip = " + skip + " ";            
         }
-        
+       
         sql += ";";
 
         

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Questionnaire } from './Questionnaire';
@@ -8,56 +8,104 @@ import { Questionnaire } from './Questionnaire';
 })
 
 export class QuestionnaireService {
-    private apiUrl = '/api/questionnaires';
+    private resourceUrl = '/questionnaires';
+    private httpClient: any;
+    private fullUrl=''; 
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string,) {
+        this.httpClient = http;
+        this.fullUrl = baseUrl + this.resourceUrl;
+    }
 
-    //
-    // Implement methods for CRUD operations (get, create, update, delete)
-    //
-    
-    
+   
     public Create(questionnaire: Questionnaire): number 
     {
-        const q: Questionnaire = {id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()};
+        var id: number = -1;
+        var resourceUrl = this.fullUrl;
+        this.http.post(resourceUrl, questionnaire)
+        .subscribe(
+            (result: any) => 
+            {
+                console.log("Success   " + result);
+                id = result[0] != null ? result[0] : '';                            
+            }, 
+            (error: any) => 
+                console.log(error)
+        );
 
-        return q.id;
+        return id;
     }
 
-    public Read(id: number): Questionnaire 
+    public Read(id: string): Questionnaire 
     {
-        const q: Questionnaire = {id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()};
+        var questionnaire: Questionnaire = {id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()};
+        var resourceUrl = this.fullUrl + '/' + id;
 
-        return q;
+        this.http.get<Questionnaire>(resourceUrl)
+        .subscribe(result => 
+        {
+            questionnaire = result;
+        }, 
+        error => console.error(error));
+
+        return questionnaire;
     }
 
-    public Update(questionnaire: Questionnaire): Questionnaire 
+    public Update(questionnaire: Questionnaire): boolean 
     {
-        const q: Questionnaire = {id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()};
+        var updated: boolean = false;
 
-        return q;
+        this.http.put(this.fullUrl, questionnaire)
+        .subscribe(
+            (result: any) => 
+            {
+                console.log("Success   " + result);
+                updated = result[0] != null ? result[0] : '';                            
+            }, 
+            (error: any) => 
+                console.log(error)
+        );
+
+        return updated;
     }
 
     public Delete(id: number): boolean 
     {
-        const q: Questionnaire = {id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()};
+        var deleted: boolean = false;
+        var resourceUrl = this.fullUrl + '/' + id;
 
-        return false;
+        this.http.delete(resourceUrl)
+        .subscribe(
+            (result: any) => 
+            {
+                console.log("Success   " + result);
+                deleted = result[0] != null ? result[0] : '';                            
+            }, 
+            (error: any) => 
+                console.log(error)
+        );
+
+        return deleted;
     }
 
-    public List(): Questionnaire[]  
+    // 
+    // Filter Questionnaires for View and Data
+    // 1. View: a) list, b) details
+    // 2. Data: a) unresponsed Questionnaires b) responsed Questionnaires  
+    //
+    public List(viewfilter: string = '', datafilter: string = ''): Questionnaire[]  
     {
-        const list: Questionnaire[] = [{id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()}];
+        var questionnaires: Questionnaire[] = [{id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()}];
+        var resourceUrl = this.fullUrl + '/' + viewfilter + '/' + datafilter;
 
-        return list;
-    }
+        this.http.get<Questionnaire[]>(resourceUrl)
+        .subscribe(result => 
+        {
+            questionnaires = result;
+        }, 
+        error => console.error(error));
 
-    public ListSurveys(): Map<number, Questionnaire> 
-    {
-        const q: Questionnaire = {id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()};
-        const list: Map<number, Questionnaire> = new Map<number, Questionnaire>();
-
-        return list;
+        return questionnaires;
     }
 
     public GetFromDOM(document: any) : Questionnaire 

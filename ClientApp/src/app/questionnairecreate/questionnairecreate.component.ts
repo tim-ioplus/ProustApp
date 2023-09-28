@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router';
 import { Questionnaire } from "../Questionnaire";
+import { QuestionnaireService } from "../QuestionnaireService";
 
 @Component({
     selector: 'app-questionnairecreate',
@@ -27,89 +28,25 @@ import { Questionnaire } from "../Questionnaire";
     
     constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string, private routerc: Router)
     {
+        this.http = httpc;
         this.mybaseUrl = baseUrl;
         this.router = routerc;
-        var resourceUrl = baseUrl+ 'quest';
+        var resourceUrl = baseUrl+ '/questionnaire';
         var id = document.URL.replace(resourceUrl+'/','');
         var fullurl = resourceUrl + '/' + id;
 
-        httpc.get<Questionnaire>(fullurl)
-        .subscribe(result => 
-        {
-            this.questionnaire = result;
-        }, 
-        error => console.error(error));
-
-        this.http = httpc;
+        // Do not laod questionnaire data, its going to be created here        
     }
 
     onSubmit():void 
     {
-        var newquestionnaire = this.GetQuest();  
+        var newquestionnaire = new QuestionnaireService(this.http, this.mybaseUrl).GetFromDOM(document);
         console.log(newquestionnaire);
-        var url = this.mybaseUrl + 'quest';
+        var url = this.mybaseUrl + '/questionnaire';
+        var res = new QuestionnaireService(this.http, this.mybaseUrl).Create(newquestionnaire);
 
-        this.http.post(url, newquestionnaire)
-        .subscribe(
-            (result: any) => 
-            {
-                console.log("Success   " + result);
-                var redirectId = result[0] != null ? result[0] : '';
-                if(redirectId != null && redirectId != '')
-                {
-                    this.Redirect(redirectId);
-                }                            
-            }, 
-            (error: any) => 
-                console.log(error)
-        );
-    }
-
-    Redirect(redirectId: string): void
-    {
-        this.router.navigate(['quests', redirectId]);
-    }
-
-
-    GetQuest(): any
-    {
-        var newquestionnaire: Questionnaire = 
-        {
-            id: 0,
-            author: '',
-            topic: '',
-            responseAuthor: '',
-            dialogs:  new Map<string, string>()
-        }
-        
-        var questionnaireIdElement = <HTMLInputElement> document.getElementsByName('questionnaire-id')[0];
-        var questionnaireAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-author')[0];
-        var questionnaireTopicElement = <HTMLInputElement> document.getElementsByName('questionnaire-topic')[0];
-        var questionnaireResponseAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-responseauthor')[0];
-        
-        newquestionnaire.id = parseInt(questionnaireIdElement.value);
-        newquestionnaire.author = questionnaireAuthorElement.value;
-        newquestionnaire.topic = questionnaireTopicElement.value;
-        newquestionnaire.responseAuthor = questionnaireResponseAuthorElement.value;
-
-        var answers = document.getElementsByName('answer-text');
-        var questions = document.getElementsByName('question-text');
-                   
-        for (let index = 0; index < answers.length; index++)
-        {
-            var answerElement = <HTMLTextAreaElement>answers[index];
-            var answerText = answerElement.value;
-
-            var questionElement = <HTMLTextAreaElement>questions[index];
-            var questionText = questionElement.value;
-
-            newquestionnaire.dialogs.set(questionText, answerText);
-        }
-
-        newquestionnaire.dialogs.get
-
-        return newquestionnaire;
-    }
+        this.router.navigate(['questionnaire', res]);
+    }  
 
     public getDictionaryKeys()
     {

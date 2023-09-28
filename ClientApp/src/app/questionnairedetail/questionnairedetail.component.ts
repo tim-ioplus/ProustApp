@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router';
+import { Questionnaire } from "../Questionnaire";
+import { QuestionnaireService } from "../QuestionnaireService";
 
 @Component({
     selector: 'app-questionnairedetail',
@@ -32,49 +34,8 @@ import {Router} from '@angular/router';
         var id = document.URL.replace(resourceUrl+'/','');
         var fullurl = resourceUrl + '/' + id;
 
-        httpc.get<Questionnaire>(fullurl)
-        .subscribe(result => 
-        {
-            this.questionnaire = result;
-        }, 
-        error => console.error(error));
-
-        this.http = httpc;
+        this.questionnaire = new QuestionnaireService(httpc, baseUrl).Read(id);
     }
-
-    onSubmit():void 
-    {
-        var newquestionnaire = this.GetQuest();  
-        console.log(newquestionnaire);
-        var url = this.mybaseUrl + 'quest';
-
-        this.http.post(url, newquestionnaire)
-        .subscribe(
-            (result: any) => 
-            {
-                console.log("Success   " + result);
-                var redirectId = result[0] != null ? result[0] : '';
-                if(redirectId != null && redirectId != '')
-                {
-                    this.Redirect(redirectId);
-                }                            
-            }, 
-            (error: any) => 
-                console.log(error)
-        );
-    }
-
-    Redirect(redirectId: string): void
-    {
-        this.router.navigate(['quests', redirectId]);
-    }
-
-
-    GetQuest(): any
-    {
-        
-    }
-
     public getDictionaryKeys()
     {
         var mkeys: string[] = []; 
@@ -82,13 +43,3 @@ import {Router} from '@angular/router';
         return mkeys;
     }
 }
-
-// @todo extract in one single class
-interface Questionnaire
- {
-    id: number;
-    author: string;
-    topic: string;
-    responseAuthor: string;
-    dialogs: Map<string, string>; 
- }
