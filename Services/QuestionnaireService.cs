@@ -6,27 +6,25 @@ using ProustApp.Domain;
 namespace ProustApp.Services;
 public class QuestionnaireService 
 {
-    public string Create(Questionnaire quests)
+    public string Create(Questionnaire questionnaire)
     {
-        var questId = "";
+        var questionnaireId = "";
 
-        if(quests != null)
+        if(questionnaire != null)
         {
-            questId = new QuestionnaireRepository().Create(quests);
+            questionnaireId = new QuestionnaireRepository().Create(questionnaire);
 
         }
 
-        return questId;
+        return questionnaireId;
     }
 
     public Questionnaire? Read(int questionnaireId)
     {
-        var quest = new Questionnaire();
-
-        if(questionnaireId > 0)
+        if (questionnaireId > 0)
         {
-            quest = new QuestionnaireRepository().Read(questionnaireId);
-            return quest;
+            Questionnaire? questionnaire = new QuestionnaireRepository().Read(questionnaireId);
+            return questionnaire;
         }
         else
         {
@@ -41,31 +39,31 @@ public class QuestionnaireService
     /// <returns>boolean indicating the success of the operation</returns>
     public bool Update(Questionnaire questionnaire)
     {
-        var result = false;
+        var updated = false;
 
         if(questionnaire != null)
         {
-            result = new QuestionnaireRepository().Update(questionnaire);
+            updated = new QuestionnaireRepository().Update(questionnaire);
         }
 
-        return result;
+        return updated;
     }
 
     /// <summary>
     /// Deletes the Questionnaire with the given identifier 
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="questionnaireId"></param>
     /// <returns>boolean indicating the success of the operation</returns>
-    public bool Delete(int id)
+    public bool Delete(int questionnaireId)
     {
-        var result = false;
+        var deleted = false;
 
-        if(id > 0)
+        if(questionnaireId > 0)
         {
-            result = new QuestionnaireRepository().Delete(id);
+            deleted = new QuestionnaireRepository().Delete(questionnaireId);
         }
 
-        return result;
+        return deleted;
     }
 
     /// <summary>
@@ -84,9 +82,14 @@ public class QuestionnaireService
     
     public Questionnaire? Get(int questionnaireId = 1, int userId=1)
     {
-        if (questionnaireId < 1) return null;
-
-        var quest = new QuestionnaireRepository().Read(questionnaireId);
-        return quest;        
+        if (questionnaireId < 1)
+        {
+            return null;
+        }
+        else
+        {
+            var quest = new QuestionnaireRepository().Read(questionnaireId);
+            return quest;
+        }        
     }
 }

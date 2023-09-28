@@ -5,54 +5,54 @@ using ProustApp.Domain;
 namespace ProustApp.Services;
 public class QuestionnaireRepository 
 {
-    private object _dataConnection = null;
-    public string Create(object quest)
+    private object? _dataConnection = null;
+    public string Create(Questionnaire questionnaire)
     {
-        var questId = "";
+        var questionnaireId = "";
 
-        if(quest != null)
+        if(questionnaire != null)
         {
-            questId = Guid.NewGuid().ToString();
+            questionnaireId = Guid.NewGuid().ToString();
             var sql = "Insert into quests";
             // todo send statement and read result
             bool success = false;
             if(!success)
             {
-                questId = "";
+                questionnaireId = "";
             }
         }
 
-        return questId;
+        return questionnaireId;
     }
-    public Questionnaire Read(int id)
+    public Questionnaire Read(int questionnaireId)
     {
-        Questionnaire? quest = null;
+        Questionnaire? questionnaire = null;
         
-        if(_dataConnection== null && id == 1)
+        if(_dataConnection== null && questionnaireId == 1)
         {
-            quest = GetMockData();
+            questionnaire = GetMockData();
         }
-        else if(id > 0)
+        else if(questionnaireId > 0)
         {
-            var sql = "Select * from quests where id=" + id + ";";
+            var sql = "Select * from quests where id=" + questionnaireId + ";";
             object result = null; 
             //@todo read from reader
             if(result != null)
             {
                 var dataResult = new Dictionary<string, string>();
                 //@todo parse dataResult from result
-                quest = ParseResult(dataResult);
+                questionnaire = ParseResult(dataResult);
             }
         }
 
-        return quest;
+        return questionnaire;
     }
 
-    public bool Update(Questionnaire quest)
+    public bool Update(Questionnaire questionnaire)
     {
-        if(quest !=null)
+        if(questionnaire !=null)
         {
-            var sql = "Update quests set answertext='" + quest + ",  where id= " + quest.Id + ";";
+            var sql = "Update quests set answertext='" + questionnaire + ",  where id= " + questionnaire.Id + ";";
             // @todo send stament and read result
             return true;
         }
@@ -60,11 +60,11 @@ public class QuestionnaireRepository
         return false;
     }
 
-    public bool Delete(int id)
+    public bool Delete(int questionnaireId)
     {
-        if(id >0)
+        if(questionnaireId > 0)
         {
-            var sql = "Delete from quests where id="+id+";";
+            var sql = "Delete from quests where id="+questionnaireId+";";
             // @todo send statement and read result;
             return true;
         }
@@ -75,7 +75,7 @@ public class QuestionnaireRepository
     
     public List<Questionnaire> List(string filter = "", int take = 0, int skip = 0)
     {
-        var quests = new List<Questionnaire>();
+        var questionnaires = new List<Questionnaire>();
 
         var sql = "Select * from quests ";
 
@@ -102,42 +102,42 @@ public class QuestionnaireRepository
 
         if(dataResults.Any())
         {
-            quests = ParseResults(dataResults);
+            questionnaires = ParseResults(dataResults);
         }
 
-        return quests;
+        return questionnaires;
     }
 
     public List<Questionnaire> ParseResults(List<object> dataResults)
     {
-        var quests = new List<Questionnaire>();
+        var questionnaires = new List<Questionnaire>();
 
         foreach(IDictionary<string, string> dataResult in dataResults)
         {
-            var quest = ParseResult(dataResult);
-            quests.Add(quest);
+            var questionnaire = ParseResult(dataResult);
+            questionnaires.Add(questionnaire);
         }
 
-        return quests;
+        return questionnaires;
     }
 
     public Questionnaire ParseResult(IDictionary<string, string> dataResult)
     {
-        var quest = new Questionnaire();
+        var questionnaire = new Questionnaire();
 
         if(dataResult.Any())
         {
             //@todo parse Dictionary result to Quest Object
         }
 
-        return quest;
+        return questionnaire;
     } 
 
     #region 'Data Helper'
 
     public Questionnaire GetMockData()
     {
-        var quest = new Questionnaire
+        var questionnaire = new Questionnaire
         {
             Id = 1,
             Author = "Marcel Proust",
@@ -167,7 +167,7 @@ public class QuestionnaireRepository
             }
         };  
 
-        return quest;
+        return questionnaire;
     }
 
     #endregion
