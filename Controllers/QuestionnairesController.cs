@@ -8,11 +8,11 @@ namespace ProustApp.Controllers;
 [ApiController]
 [Route("[controller]")]
 
-public class QuestionnaireController : ControllerBase
+public class QuestionnairesController : ControllerBase
 {
-    private readonly ILogger<QuestionnaireController> _logger;
+    private readonly ILogger<QuestionnairesController> _logger;
     
-    public QuestionnaireController(ILogger<QuestionnaireController> logger)
+    public QuestionnairesController(ILogger<QuestionnairesController> logger)
     {
         _logger = logger;
     }
@@ -42,17 +42,8 @@ public class QuestionnaireController : ControllerBase
         return questionnaire;
     }
 
-    // GET /questionnaires
-    [HttpGet]
-    public IEnumerable<Questionnaire> Get()
-    {        
-        var questionnaires = new QuestionnaireService().List();
-        
-        return questionnaires;
-    }
-
-    // GET /questionnaires/filter
-    [HttpGet("{surveyfilter}")]
+    // GET /questionnaires/list/filter
+    [HttpGet("list/{filter}")]
     public IEnumerable<Questionnaire> Get(string filter)
     {        
         var questionnaires = new QuestionnaireService().List(filter);
