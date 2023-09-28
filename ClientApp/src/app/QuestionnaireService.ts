@@ -8,7 +8,7 @@ import { Questionnaire } from './Questionnaire';
 })
 
 export class QuestionnaireService {
-    private resourceUrl = '/questionnaires';
+    private resourceUrl = 'questionnaires';
     private httpClient: any;
     private fullUrl=''; 
 

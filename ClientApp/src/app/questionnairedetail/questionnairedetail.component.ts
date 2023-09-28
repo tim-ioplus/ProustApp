@@ -24,19 +24,15 @@ import { QuestionnaireService } from "../QuestionnaireService";
 
     public mybaseUrl = 'BASE_URL';
     http: any;
-    router: Router;
     
-    constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string, private routerc: Router)
+    constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string)
     {
         this.mybaseUrl = baseUrl;
-        this.router = routerc;
-        var resourceUrl = baseUrl+ 'quest';
-        var id = document.URL.replace(resourceUrl+'/','');
-        var fullurl = resourceUrl + '/' + id;
-
+        var splits = document.URL.split('/');
+        var id = splits[splits.length-1];         
         this.questionnaire = new QuestionnaireService(httpc, baseUrl).Read(id);
     }
-    
+
     public getDictionaryKeys()
     {
         var mkeys: string[] = []; 
