@@ -1,6 +1,4 @@
-
- // @todo use everywhere this one single class
- export interface Questionnaire
+export interface Questionnaire
  {
     id: number;
     author: string;
