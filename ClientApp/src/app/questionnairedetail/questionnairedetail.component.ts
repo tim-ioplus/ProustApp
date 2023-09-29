@@ -23,14 +23,21 @@ import { QuestionnaireService } from "../QuestionnaireService";
      }
 
     public mybaseUrl = 'BASE_URL';
-    http: any;
-    
+
     constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string)
     {
-        this.mybaseUrl = baseUrl;
         var splits = document.URL.split('/');
         var id = splits[splits.length-1];         
-        this.questionnaire = new QuestionnaireService(httpc, baseUrl).Read(id);
+        
+        new QuestionnaireService(httpc, baseUrl).Read(id)
+        .subscribe(result => 
+            {
+                console.log('<service')
+                console.log(result);
+                console.log(JSON.stringify(result));
+                this.questionnaire = result;
+            }, 
+            error => console.error(error));
     }
 
     public getDictionaryKeys()

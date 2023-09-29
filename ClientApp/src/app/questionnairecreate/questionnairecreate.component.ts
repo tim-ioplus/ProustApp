@@ -31,21 +31,24 @@ import { QuestionnaireService } from "../QuestionnaireService";
         this.http = httpc;
         this.mybaseUrl = baseUrl;
         this.router = routerc;
-        var resourceUrl = baseUrl+ '/questionnaire';
-        var id = document.URL.replace(resourceUrl+'/','');
-        var fullurl = resourceUrl + '/' + id;
-
         // Do not laod questionnaire data, its going to be created here        
     }
 
     onSubmit():void 
     {
-        var newquestionnaire = new QuestionnaireService(this.http, this.mybaseUrl).GetFromDOM(document);
-        console.log(newquestionnaire);
-        var url = this.mybaseUrl + '/questionnaire';
-        var res = new QuestionnaireService(this.http, this.mybaseUrl).Create(newquestionnaire);
-
-        this.router.navigate(['questionnaire', res]);
+        new QuestionnaireService(this.http, this.mybaseUrl).GetFromDOM(document)
+        .subscribe(newquestionnaire =>{
+            new QuestionnaireService(this.http, this.mybaseUrl).Create(newquestionnaire)
+            .subscribe(
+                (result: number) => 
+                {
+                    this.router.navigate(['questionnaire', result]);                           
+                }, 
+                (error: any) => 
+                    console.log(error)
+            );
+        }, (error: any) => console.log(error) );
+        
     }  
 
     public getDictionaryKeys()

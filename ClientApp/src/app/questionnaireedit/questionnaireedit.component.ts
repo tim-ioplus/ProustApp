@@ -29,19 +29,32 @@ import { Questionnaire } from "../Questionnaire";
     constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string, private routerc: Router)
     {
         this.http = httpc;
-        this.mybaseUrl = baseUrl;
         this.router = routerc;
-        var resourceUrl = baseUrl+ 'quest';
-        var id = document.URL.replace(resourceUrl+'/','');
-        var fullurl = resourceUrl + '/' + id;
-        this.questionnaire = new QuestionnaireService(this.http, this.mybaseUrl).Read(id);        
+        this.mybaseUrl = baseUrl;
+
+        var splits = document.URL.split('/');
+        var id = splits[splits.length-1];         
+                
+        new QuestionnaireService(this.http, this.mybaseUrl).Read(id)
+        .subscribe(
+            result => {
+                this.questionnaire = result;
+            }, 
+            error => console.log(error));        
     }
 
     onSubmit():void 
     {
-        var questionnaire = new QuestionnaireService(this.http, this.mybaseUrl).GetFromDOM(document);
-        var redir = new QuestionnaireService(this.http, this.mybaseUrl).Update(questionnaire);
-        this.router.navigate(['quests', questionnaire.id]);
+        new QuestionnaireService(this.http, this.mybaseUrl).GetFromDOM(document)
+        .subscribe((questionnaire: Questionnaire) => 
+            {
+                new QuestionnaireService(this.http, this.mybaseUrl).Update(questionnaire)
+                .subscribe((updateResult : boolean) => 
+                {
+                   this.router.navigate(['quests', questionnaire.id]);
+                }, error => console.log(error))
+            },
+            error => console.log(error));
     }
 
     public getDictionaryKeys()

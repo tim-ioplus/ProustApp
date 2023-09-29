@@ -15,6 +15,11 @@ import { QuestionnaireService } from "../QuestionnaireService";
 
    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
    {
-      this.questionnaires = new QuestionnaireService(http, baseUrl).List("list","unresponded");
+      new QuestionnaireService(http, baseUrl).List("list","unresponded")
+      .subscribe(result => 
+         {
+             this.questionnaires = result;
+         }, 
+         error => console.error(error));
    }
  }

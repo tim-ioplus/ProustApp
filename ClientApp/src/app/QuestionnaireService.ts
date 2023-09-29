@@ -18,55 +18,20 @@ export class QuestionnaireService {
     }
 
    
-    public Create(questionnaire: Questionnaire): number 
+    public Create(questionnaire: Questionnaire): Observable<number> 
     {
-        var id: number = -1;
-        var resourceUrl = this.fullUrl;
-        this.http.post(resourceUrl, questionnaire)
-        .subscribe(
-            (result: any) => 
-            {
-                console.log("Success   " + result);
-                id = result[0] != null ? result[0] : '';                            
-            }, 
-            (error: any) => 
-                console.log(error)
-        );
-
-        return id;
+        return this.http.post<number>(this.fullUrl, questionnaire);
     }
 
-    public Read(id: string): Questionnaire 
+    public Read(id: string): Observable<Questionnaire> 
     {
-        var questionnaire: Questionnaire = {id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()};
         var resourceUrl = this.fullUrl + '/' + id;
-
-        this.http.get<Questionnaire>(resourceUrl)
-        .subscribe(result => 
-        {
-            questionnaire = result;
-        }, 
-        error => console.error(error));
-
-        return questionnaire;
+        return this.http.get<Questionnaire>(resourceUrl);
     }
 
-    public Update(questionnaire: Questionnaire): boolean 
+    public Update(questionnaire: Questionnaire): Observable<boolean> 
     {
-        var updated: boolean = false;
-
-        this.http.put(this.fullUrl, questionnaire)
-        .subscribe(
-            (result: any) => 
-            {
-                console.log("Success   " + result);
-                updated = result[0] != null ? result[0] : '';                            
-            }, 
-            (error: any) => 
-                console.log(error)
-        );
-
-        return updated;
+        return this.http.put<boolean>(this.fullUrl, questionnaire);
     }
 
     public Delete(id: number): boolean 
@@ -93,58 +58,49 @@ export class QuestionnaireService {
     // 1. View: a) list, b) details
     // 2. Data: a) unresponsed Questionnaires b) responsed Questionnaires  
     //
-    public List(viewfilter: string = '', datafilter: string = ''): Questionnaire[]  
+    public List(viewfilter: string = '', datafilter: string = ''): Observable<Questionnaire[]>  
     {
-        var questionnaires: Questionnaire[] = [{id:0,author:'',topic:'', responseAuthor:'', dialogs: new Map<string, string>()}];
-        var resourceUrl = this.fullUrl + '/' + viewfilter + '/' + datafilter;
-
-        this.http.get<Questionnaire[]>(resourceUrl)
-        .subscribe(result => 
-        {
-            questionnaires = result;
-        }, 
-        error => console.error(error));
-
-        return questionnaires;
+        return this.http.get<Questionnaire[]>(this.fullUrl + '/' + viewfilter + '/' + datafilter);
     }
 
-    public GetFromDOM(document: any) : Questionnaire 
+    GetFromDOM(document: any) : Observable<Questionnaire> 
     {
-        var newquestionnaire: Questionnaire = 
-        {
-            id: 0,
-            author: '',
-            topic: '',
-            responseAuthor: '',
-            dialogs:  new Map<string, string>()
-        }
-        
-        var questionnaireIdElement = <HTMLInputElement> document.getElementsByName('questionnaire-id')[0];
-        var questionnaireAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-author')[0];
-        var questionnaireTopicElement = <HTMLInputElement> document.getElementsByName('questionnaire-topic')[0];
-        var questionnaireResponseAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-responseauthor')[0];
-        
-        newquestionnaire.id = parseInt(questionnaireIdElement.value);
-        newquestionnaire.author = questionnaireAuthorElement.value;
-        newquestionnaire.topic = questionnaireTopicElement.value;
-        newquestionnaire.responseAuthor = questionnaireResponseAuthorElement.value;
+        return new Observable<Questionnaire>((observer) => {
+            // Emit a value (in this case, a number)
+            //observer.next(42);
+            
+            var questionnaireIdElement = <HTMLInputElement> document.getElementsByName('questionnaire-id')[0];
+            var questionnaireAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-author')[0];
+            var questionnaireTopicElement = <HTMLInputElement> document.getElementsByName('questionnaire-topic')[0];
+            var questionnaireResponseAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-responseauthor')[0];
 
-        var answers = document.getElementsByName('answer-text');
-        var questions = document.getElementsByName('question-text');
-                   
-        for (let index = 0; index < answers.length; index++)
-        {
-            var answerElement = <HTMLTextAreaElement>answers[index];
-            var answerText = answerElement.value;
+            var newquestionnaire: Questionnaire = 
+            {
+                id: parseInt(questionnaireIdElement.value),
+                author: questionnaireAuthorElement.value,
+                topic: questionnaireTopicElement.value,
+                responseAuthor: questionnaireResponseAuthorElement.value,
+                dialogs:  new Map<string, string>()
+            }
 
-            var questionElement = <HTMLTextAreaElement>questions[index];
-            var questionText = questionElement.value;
+            var answers = document.getElementsByName('answer-text');
+            var questions = document.getElementsByName('question-text');
+                    
+            for (let index = 0; index < answers.length; index++)
+            {
+                var answerElement = <HTMLTextAreaElement>answers[index];
+                var answerText = answerElement.value;
 
-            newquestionnaire.dialogs.set(questionText, answerText);
-        }
+                var questionElement = <HTMLTextAreaElement>questions[index];
+                var questionText = questionElement.value;
 
-        newquestionnaire.dialogs.get
+                newquestionnaire.dialogs.set(questionText, answerText);
+            }
 
-        return newquestionnaire;
+            observer.next(newquestionnaire);
+
+            // Complete the observable
+            observer.complete();
+        });        
     }
 }
