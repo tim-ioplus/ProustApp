@@ -2,6 +2,7 @@
     "Questionnaire":
     {
       "id":0,
+      "guid":"", 
       "Author":"",
       "Topic": "",
       "ResponseAuthor":"",
