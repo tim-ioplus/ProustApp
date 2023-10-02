@@ -8,9 +8,6 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 
-// @todo remove - Old Quest Component  
-import { QuestComponent }               from './quest/quest.component';
-//
 import { QuestionnaireCreateComponent } from './questionnairecreate/questionnairecreate.component';
 import { QuestionnaireDetailComponent } from './questionnairedetail/questionnairedetail.component';
 import { QuestionnaireEditComponent }   from './questionnaireedit/questionnaireedit.component'; 
@@ -20,9 +17,6 @@ import { QuestionnaireListComponent }   from './questionnairelist/questionnairel
 const routes: Routes = [
   //
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  //
-  // @todo remove - Old Quest Component  
-  { path: 'quest', component: QuestComponent },
   //
   // Lists new or filled out Questionnaires 
   { path: 'questionnaires', component: QuestionnaireListComponent },
@@ -45,7 +39,6 @@ const routes: Routes = [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    QuestComponent,
     QuestionnaireListComponent,
     QuestionnaireDetailComponent,
     QuestionnaireEditComponent,
