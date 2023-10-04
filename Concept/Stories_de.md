@@ -1,17 +1,17 @@
-# Proust App
+# Prousts-Quests-App
 
 ## Elevator Pitch
 
-Die Proust-App möchte dich zu interessanten Gedanken und Gesprächen anregen, um dich selbst und andere besser kennen zu lernen.
+Die Prousts-Quests-App möchte dich zu interessanten Gedanken und Gesprächen anregen, um dich selbst und andere besser kennen zu lernen.
 
 ## Intro
 
-In der Vergangenheit haben auch Erwachsene das heute bei Kindern beliebte [Freunde- oder Poesiealbum](https://de.wikipedia.org/wiki/Poesiealbum) in denen persönliche Gedanken, Weiheiten, Witze und Skizzen festgehalten wurden.
-In Marcel Proust Variante [Proust Questionnaire](https://en.wikipedia.org/wiki/Proust_Questionnaire) als einer Art Offenbarungs-Fragebogen um damit interessante Gedanken und Gespräche anzustossen und sich persönlich näher zu kommen.
+In der Vergangenheit haben auch Erwachsene das, heute bei Kindern beliebte, [Freunde- oder Poesiealbum](https://de.wikipedia.org/wiki/Poesiealbum) gebraucht in denen persönliche Gedanken, Weiheiten, Witze und Skizzen festgehalten wurden.
+Der Schriftsteller Marcel Proust verfasste seine Variante, das [Proust Questionnaire](https://en.wikipedia.org/wiki/Proust_Questionnaire), als einer Art Offenbarungs-Fragebogen um damit interessante Gedanken und Gespräche anzustossen und sich persönlich näher zu kommen.
 
-Heutzutage ist es für viele schwierig diese Nähe über räumliche Distanzen, Lockdowns den stressigen Alltag aufrecht zu erhalten. Social Media schafft die Verbindung las kurzlebiges Statusupdate wird aber eher nicht dazu genutzt langlebigere und inspirierende Gedanken auszutauschen.
+Heutzutage ist es für manche Leute schwierig diese Nähe über räumliche Distanzen, Lockdowns, den stressigen Alltag aufrecht zu erhalten. Social Media schafft eine Verbindung als kurzlebiges Statusupdate wird aber eher nicht dazu genutzt langlebigere Gedanken auszutauschen.
 
-Die Proust-App möchte es erleichtern diese Gedanken zu inspirieren, festzuhalten und zu teilen und so etwas über sich selbst und andere zu erfahren.
+Die Proust-Quests-App möchte es erleichtern diese Gedanken zu inspirieren, festzuhalten und zu teilen und so etwas über sich selbst und andere zu erfahren.
 
 ### Links
 
