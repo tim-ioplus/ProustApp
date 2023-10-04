@@ -145,7 +145,8 @@ public class QuestionnaireRepository
             ResponseAuthor = "Marcel Proust",
             Dialogs = new Dictionary<string, string>
             {
-                { "Your favourite virtue?", "The need to be loved; more precisely, the need to be caressed and spoiled much more than the need to be admired."},
+                { "Your favourite virtue?", 
+                "The need to be loved; more precisely, the need to be caressed and spoiled much more than the need to be admired."},
                 {  "Your favourite qualities in a man?", "Intelligence, moral sense." },
                 { "Your favourite qualities in a woman?", "Gentleness, naturalness, intelligence."},
                 { "Your chief characteristic?", ""}, // @todo possibility to intentionally left blank
