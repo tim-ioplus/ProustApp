@@ -16,21 +16,16 @@
     <input name="questionnaire-responseauthor" type="text" value="{{questionnaire.responseAuthor}}" />
     <br>
     </div>
-    <div style="margin-top:24px;" *ngFor="let key of getDictionaryKeys()">
-      <label for="question-text">Question:{{ key }}</label><br>
-      <label for="answer-text">Answer:</label><br>
-      <textarea readonly name="answer-text" type="" placeholder="" 
-        value="{{ questionnaire.dialogs.get(key) }}" style="margin-left:12px;width:80%;" 
-        readonly></textarea>
+    <div name="questions">
+      <div style="margin-top:24px;">
+        <label for="answer-text">Frage:</label><br>
+        <textarea readonly name="answer-text" type="" placeholder="" value="" style="margin-left:12px;width:80%;" readonly>
+        </textarea>
       </div>
-
-    <!-- 
-      <div style="margin-top:24px;" *ngFor="let quest of quests">
-      <label for="question-text">{{ quest.questionId }}. {{ quest.questionText }}</label><br>
-      <label for="answer-author">Name:</label><input type="text" name="answer-author" value="{{quest.answerAuthor}}"/><br>
-      <label for="answer-text">Answer:</label><br>
-      <textarea name="answer-text" type="" placeholder="" value="{{quest.answerText}}" style="margin-left:12px;width:80%;"></textarea>
-    </div>-->
+    </div>
+    <div style="margin-top:12px">
+      <input name="addquestion" type="button" value="">
+    </div>
     <div style="margin-top:24px; margin-bottom:24px;">
       <input type="submit">
     </div>

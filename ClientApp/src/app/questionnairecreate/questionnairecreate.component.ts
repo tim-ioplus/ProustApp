@@ -47,8 +47,7 @@ import { QuestionnaireService } from "../QuestionnaireService";
                 (error: any) => 
                     console.log(error)
             );
-        }, (error: any) => console.log(error) );
-        
+        }, (error: any) => console.log(error) );        
     }  
 
     public getDictionaryKeys()
