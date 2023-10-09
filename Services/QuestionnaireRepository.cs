@@ -71,7 +71,6 @@ public class QuestionnaireRepository
 
         return false;
     }
-
     
     public List<Questionnaire> List(string filter = "", int take = 0, int skip = 0)
     {
@@ -107,7 +106,7 @@ public class QuestionnaireRepository
 
         return questionnaires;
     }
-
+    
     public List<Questionnaire> ParseResults(List<object> dataResults)
     {
         var questionnaires = new List<Questionnaire>();

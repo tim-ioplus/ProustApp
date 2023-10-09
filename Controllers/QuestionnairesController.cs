@@ -37,8 +37,7 @@ public class QuestionnairesController : ControllerBase
     [HttpGet("{id}")]
     public Questionnaire Get(int id)
     {        
-        var questionnaire = new QuestionnaireService().Get(id);
-        
+        var questionnaire = new QuestionnaireService().Get(id);        
         return questionnaire;
     }
 
@@ -46,8 +45,7 @@ public class QuestionnairesController : ControllerBase
     [HttpGet("list/{filter}")]
     public IEnumerable<Questionnaire> Get(string filter)
     {        
-        var questionnaires = new QuestionnaireService().List(filter);
-        
+        var questionnaires = new QuestionnaireService().List(filter);        
         return questionnaires;
     }
 
@@ -65,11 +63,5 @@ public class QuestionnairesController : ControllerBase
     {
         var deleted = new QuestionnaireService().Delete(id);
         return new OkObjectResult(deleted);
-    }
-
-
-    
-    
-
-
+    } 
 }
