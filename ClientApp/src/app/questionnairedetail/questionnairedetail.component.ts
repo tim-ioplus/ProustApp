@@ -44,6 +44,13 @@ import { QuestionnaireService } from "../QuestionnaireService";
     {
         var mkeys: string[] = []; 
         var mkeys = Object.getOwnPropertyNames(this.questionnaire.dialogs);
+        console.log(mkeys);
+        mkeys.forEach(key => {
+            var res = this.questionnaire.dialogs.get(key);
+            console.log("key: " + key);
+            console.log("res: " + res);
+        });
+        
         return mkeys;
     }
 }

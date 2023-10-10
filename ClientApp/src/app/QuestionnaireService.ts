@@ -34,23 +34,10 @@ export class QuestionnaireService {
         return this.http.put<boolean>(this.fullUrl, questionnaire);
     }
 
-    public Delete(id: number): boolean 
+    public Delete(id: number): Observable<boolean> 
     {
-        var deleted: boolean = false;
         var resourceUrl = this.fullUrl + '/' + id;
-
-        this.http.delete(resourceUrl)
-        .subscribe(
-            (result: any) => 
-            {
-                console.log("Success   " + result);
-                deleted = result[0] != null ? result[0] : '';                            
-            }, 
-            (error: any) => 
-                console.log(error)
-        );
-
-        return deleted;
+        return this.http.delete<boolean>(resourceUrl);
     }
 
     // 
