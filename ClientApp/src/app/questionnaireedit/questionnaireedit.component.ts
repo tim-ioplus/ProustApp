@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import {Router} from '@angular/router';
 import { QuestionnaireService } from "../QuestionnaireService";
 import { Questionnaire } from "../Questionnaire";
+import { Dialog } from "../Dialog";
 
 @Component({
     selector: 'app-questionnaireedit',
@@ -25,6 +26,8 @@ import { Questionnaire } from "../Questionnaire";
     public mybaseUrl = 'BASE_URL';
     http: any;
     router: Router;
+
+    public dialogx: Dialog[] = [];
     
     constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string, private routerc: Router)
     {
@@ -39,6 +42,17 @@ import { Questionnaire } from "../Questionnaire";
         .subscribe(
             result => {
                 this.questionnaire = result;
+                for (const [key, value] of Object.entries(this.questionnaire.dialogs)) 
+                {
+                    //console.log(`${key}: ${value}`);
+                    var dx: Dialog = 
+                    {
+                        question: key,
+                        answer: value
+                    };
+                    
+                    this.dialogx.push(dx);
+                }
             }, 
             error => console.log(error));        
     }
