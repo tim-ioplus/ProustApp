@@ -11,13 +11,90 @@ code {
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  /*background-color: #1b6ec2;
+  border-color: #1861ac;*/
+}
+
+header
+{
+  border: 2px solid black;
+  border-bottom:1px;
 }
 
 #app-footer
 {
-  height: 48px;
-  margin-top: 12px;
-  background-color: aqua;
+  min-height: 48px;
+  padding: 1em;
+  background-color: rgb(13, 71, 88);
+  border: 2px solid black;
+  text-align: center;
+}
+
+#app-footer a
+{
+  margin:6px;
+}
+
+img
+{
+
+}
+
+/**/
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  /*box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);*/
+  border-bottom:2px solid black;
+}
+
+/**/
+
+/* Front page*/
+.actionbox
+{
+  padding:1em;
+  text-align:center;
+  min-height:60px;
+  border: 2px solid black;
+  border-bottom:1px;
+}
+.abhero
+{
+  background-image: url('/assets/MarcelProustPortrait4.jpeg');
+  background-position: center;
+  /*background:yellow;*/
+  min-height:240px;
+}
+
+.abhero h1, .abhero h2
+{
+  background-color: #fff;
+  background-blend-mode: lighten;
+}
+
+.abstart
+{
+  background: aquamarine;
+}
+.abinspire
+{
+  background: azure;
+}
+.ababout
+{
+  background: #feffc2;
 }

@@ -1,8 +1,26 @@
-<h1>Welcome to Proust' Quest</h1>
-<h2>Think something new</h2>
-<img src="./assets/MarcelProustPortrait4.jpeg" width="50%" height="50%"/>
-<a class="nav-link text-dark" [routerLink]="['/questionnaires/1']">Read Prousts Answers</a>
-<a class="nav-link text-dark" [routerLink]="['/questionnaires/new']">Start your Quest</a>
+
+<div class="actionbox abhero">
+    <br>
+    <h1>Welcome to Proust' Quest</h1>
+    <h2>Think something new</h2>
+</div>
+
+<div class="actionbox abstart">
+  <p class="aligncenter">
+    Get inspired for interesting thoughts<br>
+    Learn something about yourself<br>
+    Learn something about others
+  </p>
+
+  <button><a class="nav-link text-dark" [routerLink]="['/questionnaires/new']">Start your Quest</a></button>
+</div>
+<div class="actionbox abinspire">
+  <a class="nav-link text-dark" [routerLink]="['/questionnaires/1']">Read Prousts Answers</a>
+</div>
+<div class="actionbox ababout">
+  <a class="nav-link text-dark" [routerLink]="['/about']">About the Proust Questionnaire</a>
+</div>
+
 <!--<h3>Learn something about yourself.. </h3> --
 <h3>.. and others
   -->
