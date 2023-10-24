@@ -1,34 +1,25 @@
-<h1 id="tableLabel">Start Proust Quest</h1>
-
-<p>This component loads the data Prousts own questionnaire from the server.</p>
-
 <p *ngIf="!questionnaire"><em>Questionnaire Data couldnt be loaded so far. Loading...</em></p>
 <p *ngIf="!dialogx"><em>Dialog Data couldnt be loaded so far. Loading...</em></p>
 
-<hr>
-<form id="questForm">
-  <fieldset>
-    <!-- @todo Titel und Author als parm-->
-    <legend>Prousts own Questionnaire</legend>
-    <div name="questionnaire-metadata">
-    <input name="questionnaire-id" type="text" value="{{questionnaire.id}}" />, 
-    <input name="questionnaire-author" type="text" value="{{questionnaire.author}}" />
-    <input name="questionnaire-topic" type="text" value="{{questionnaire.topic}}" />
-    <input name="questionnaire-responseauthor" type="text" value="{{questionnaire.responseAuthor}}" />
-    <br>
-    </div>
+<h1 id="tableLabel">Read: {{ questionnaire.topic }}</h1>
 
-    <div style="margin-top:24px;" *ngFor="let dialog of dialogx">
-      <label for="question-text">Question: {{ dialog.question }}</label><br>
-      <label for="answer-text">Answer:</label><br>
-      <textarea readonly name="answer-text" type="" placeholder="" 
-        value="{{ dialog.answer }}" style="margin-left:12px;width:80%;" 
-        readonly></textarea>
-      </div>
+<table class="questmetadata">
+  <tr>
+    <td># {{ questionnaire.id }}</td>
+    <td>{{ questionnaireAmountQuestions }} Questions</td>
+    <td>By: {{ questionnaire.author }} </td>
+    <td>For: {{ questionnaire.responseAuthor }}</td>
+    <td><button value="Share"></button></td>
+  </tr>
+</table>
 
-    <div style="margin-top:24px; margin-bottom:24px;">
-      <input type="submit" style="visibility: hidden;">
-    </div>
-  </fieldset>
-</form>
-<hr>
+<div style="margin-top:24px;" *ngFor="let dialog of dialogx">
+<table class="dialogtable">
+  <tr>
+    <td class="numcol"># {{ dialog.number }} </td><td>Question:</td><td> {{ dialog.question }} </td>
+  </tr>
+  <tr>
+    <td class="numcol"></td><td>Answer:</td><td> {{ dialog.answer }}</td>
+  </tr>
+</table>  
+</div>

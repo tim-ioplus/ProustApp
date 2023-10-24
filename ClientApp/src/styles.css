@@ -25,7 +25,7 @@ header
 {
   min-height: 48px;
   padding: 1em;
-  background-color: rgb(13, 71, 88);
+  background-color: none; /* rgb(13, 71, 88); */
   border: 2px solid black;
   text-align: center;
 }
@@ -49,6 +49,8 @@ a.navbar-brand {
 
 html {
   font-size: 14px;
+  border-color: black;
+
 }
 @media (min-width: 768px) {
   html {
@@ -75,20 +77,22 @@ html {
 .abhero
 {
   background-image: url('/assets/MarcelProustPortrait4.jpeg');
+  background-size: cover;
   background-position: center;
-  /*background:yellow;*/
   min-height:240px;
+  padding-top: 4em;
 }
 
 .abhero h1, .abhero h2
 {
-  background-color: #fff;
-  background-blend-mode: lighten;
+  color: #fbfbfb;
+  color: rgb(13, 71, 88);
+  /*background-blend-mode: lighten;*/
 }
 
 .abstart
 {
-  background: aquamarine;
+  background: #feffc2;
 }
 .abinspire
 {
@@ -96,5 +100,16 @@ html {
 }
 .ababout
 {
-  background: #feffc2;
+  background: aquamarine;
+}
+
+/*   Detail view   */
+.questmetadata
+{
+  border: 1px solix black;
+}
+
+.dialogtable
+{
+  border: 1px solix black;
 }

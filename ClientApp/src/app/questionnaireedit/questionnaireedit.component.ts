@@ -28,6 +28,7 @@ import { Dialog } from "../Dialog";
     router: Router;
 
     public dialogx: Dialog[] = [];
+    public questionnaireAmountQuestions: number = 0; 
     
     constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string, private routerc: Router)
     {
@@ -42,13 +43,15 @@ import { Dialog } from "../Dialog";
         .subscribe(
             result => {
                 this.questionnaire = result;
+                
                 for (const [key, value] of Object.entries(this.questionnaire.dialogs)) 
                 {
-                    //console.log(`${key}: ${value}`);
+                    this.questionnaireAmountQuestions++;
                     var dx: Dialog = 
                     {
                         question: key,
-                        answer: value
+                        answer: value,
+                        number: this.questionnaireAmountQuestions
                     };
                     
                     this.dialogx.push(dx);

@@ -23,6 +23,8 @@ import { QuestionnaireService } from "../QuestionnaireService";
         dialogs:  new Map<string, string>()
      }
 
+    public questionnaireAmountQuestions: number = 0; 
+
     public dialogx: Dialog[] = [];
 
 
@@ -36,22 +38,23 @@ import { QuestionnaireService } from "../QuestionnaireService";
         new QuestionnaireService(httpc, baseUrl).Read(id)
         .subscribe(result => 
             {
-                /*console.log('<service')
-                console.log(result);
-                console.log(JSON.stringify(result));*/
                 this.questionnaire = result;
+                
 
                 for (const [key, value] of Object.entries(this.questionnaire.dialogs)) 
                 {
-                    //console.log(`${key}: ${value}`);
+                    this.questionnaireAmountQuestions++;
+                    
                     var dx: Dialog = 
                     {
                         question: key,
-                        answer: value
+                        answer: value,
+                        number: this.questionnaireAmountQuestions
                     };
                     
                     this.dialogx.push(dx);
                 }
+
                 
             }, 
             error => console.error(error));
