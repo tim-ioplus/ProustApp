@@ -87,20 +87,19 @@ html {
 {
   color: #fbfbfb;
   color: rgb(13, 71, 88);
-  /*background-blend-mode: lighten;*/
 }
 
 .abstart
 {
-  background: #feffc2;
+  background: rgb(254, 255, 194);
 }
 .abinspire
 {
-  background: azure;
+  background: #f0ffff; /* azure */
 }
 .ababout
 {
-  background: aquamarine;
+  background: #80ffd4; /* aquamarine */
 }
 
 /*   Detail view   */
