@@ -1,15 +1,11 @@
-<h1 id="tableLabel">Start Proust Quest</h1>
-
-<p>This component loads Quests data from the server.</p>
-
 <p *ngIf="!questionnaire"><em>Questionnaire Data couldnt be loaded so far. Loading...</em></p>
 <p *ngIf="!dialogx"><em>Dialog Data couldnt be loaded so far. Loading...</em></p>
 
-<hr>
+<h1 id="tableLabel">Edit: {{ questionnaire.topic }}</h1>
+
 <form id="questForm" (ngSubmit)="onSubmit()">
   <fieldset>
-    <!-- @todo Titel und Author als parm-->
-    <legend>Prousts own Questionnaire</legend>
+    <legend>Edit the Questionnaire</legend>
     <div name="questionnaire-metadata">
     <input name="questionnaire-id" type="text" value="{{questionnaire.id}}" />, 
     <input name="questionnaire-author" type="text" value="{{questionnaire.author}}" />

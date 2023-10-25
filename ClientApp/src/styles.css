@@ -74,6 +74,7 @@ html {
   border: 2px solid black;
   border-bottom:1px;
 }
+
 .abhero
 {
   background-image: url('/assets/MarcelProustPortrait4.jpeg');
@@ -83,9 +84,18 @@ html {
   padding-top: 4em;
 }
 
-.abhero h1, .abhero h2
-{
-  color: #fbfbfb;
+/*
+.abherocontent h1, .abherocontent h2 {color: rgb(13, 71, 88); }
+*/
+.abherocontent{
+  background-color: #fbfbfb;
+  /*Opacity start*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.80;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+  /*Opacity end*/
   color: rgb(13, 71, 88);
 }
 
