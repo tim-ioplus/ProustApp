@@ -13,6 +13,9 @@ import { QuestionnaireDetailComponent } from './questionnairedetail/questionnair
 import { QuestionnaireEditComponent }   from './questionnaireedit/questionnaireedit.component'; 
 import { QuestionnaireFillComponent }   from './questionnairefill/questionnairefill.component';
 import { QuestionnaireListComponent }   from './questionnairelist/questionnairelist.component';
+import { AboutComponent }   from './about/about.component';
+import { ContactComponent }   from './about/contact.component';
+import { ImprintComponent } from './about/imprint.component';
 
 const routes: Routes = [
   //
@@ -20,9 +23,11 @@ const routes: Routes = [
   //
   // Lists new or filled out Questionnaires 
   { path: 'questionnaires', component: QuestionnaireListComponent },
+  { path: 'questionnaires/list', component: QuestionnaireListComponent },
   // 
   // View a Questionnaire, either blank or filled out
   { path: 'questionnaires/:id', component: QuestionnaireDetailComponent },
+  { path: 'questionnaires/read/:id', component: QuestionnaireDetailComponent },
   //
   // Create a new Questionnaire
   { path: 'questionnaires/create', component: QuestionnaireCreateComponent },
@@ -32,6 +37,15 @@ const routes: Routes = [
   //
   // Fill out an existing Questionnaire
   { path: 'questionnaires/fill/:id', component: QuestionnaireFillComponent },
+  //
+  // Info about Questionnaire
+  { path: 'about', component: AboutComponent },
+  //
+  // Contact about Questionnaire
+  { path: 'contact', component: ContactComponent },
+  //
+  // lawly required Info
+  { path: 'imprint', component: ImprintComponent }
 ];
 
 @NgModule({
