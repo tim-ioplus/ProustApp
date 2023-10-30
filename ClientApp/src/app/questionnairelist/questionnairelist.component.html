@@ -8,6 +8,6 @@
 
 <ul>
   <li *ngFor="let questionnaire of questionnaires">
-    {{ questionnaire.id }}
+    {{ questionnaire.id }} - <a class="nav-link text-dark" [routerLink]="['/questionnaires/read/{{ questionnaire.id }}']">Read Prousts Answers</a>
   </li>
 </ul>
