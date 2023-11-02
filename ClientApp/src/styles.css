@@ -1,18 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  font-size: 14px;
+  border-color: black;
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+    padding: left 33% right 33%;
+  }
 }
 
-code {
-  color: #e01a76;
-}
+/**/
 
 .btn-primary {
   color: #fff;
-  /*background-color: #1b6ec2;
-  border-color: #1861ac;*/
+  background-color: #1b6ec2;
+  border-color: #1861ac;
 }
 
 header
@@ -47,16 +50,7 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-html {
-  font-size: 14px;
-  border-color: black;
 
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
 
 .box-shadow {
   /*box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);*/
@@ -74,42 +68,73 @@ html {
   border: 2px solid black;
   border-bottom:1px;
 }
-
+button
+{
+  font-family:'Courier New', Courier, monospace;
+}
+.actionbox button
+{
+  border: 1px solid black;
+  text-align:center;
+  padding:6px;
+  background: #fafafa;
+}
+.actionbox button:hover
+{
+  border: 2px solid grey;
+  padding:5px;
+  background: #fff;
+  color: darkgray;
+}
 .abhero
 {
   background-image: url('/assets/MarcelProustPortrait4.jpeg');
   background-size: cover;
   background-position: center;
   min-height:240px;
-  padding-top: 4em;
+  padding-top: 5em;
 }
 
-/*
-.abherocontent h1, .abherocontent h2 {color: rgb(13, 71, 88); }
-*/
+
+.abherocontent h1, .abherocontent h2 {color: black; }
+
 .abherocontent{
   background-color: #fbfbfb;
-  /*Opacity start*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-  filter: alpha(opacity=80);
-  -moz-opacity: 0.80;
-  -khtml-opacity: 0.8;
-  opacity: 0.8;
+  /*Opacity start*
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+  filter: alpha(opacity=85);
+  -moz-opacity: 0.85;
+  -khtml-opacity: 0.7;
+  opacity: 0.7;
   /*Opacity end*/
-  color: rgb(13, 71, 88);
+  color: black;
 }
 
-.abstart
+.abclaims
+{
+  
+}
+
+.abstart{}
+.abinspire{}
+.ablist{}
+.ababout{}
+
+.bgyellow
 {
   background: rgb(254, 255, 194);
 }
-.abinspire
+.bgazure
 {
-  background: #f0ffff; /* azure */
+  background: #f0ffff; 
 }
-.ababout
+.bgberry
 {
-  background: #80ffd4; /* aquamarine */
+  background:  #df5379;
+}
+.bglightgreen
+{
+  background: #80ffd4; 
 }
 
 /*   Detail view   */

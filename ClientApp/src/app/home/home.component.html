@@ -5,23 +5,31 @@
   </div>
 </div>
 
-<div class="actionbox abstart">
-  <p class="aligncenter">
+<div class="actionbox abstart bgberry">
+  <p class="aligncenter abclaims">
     Get inspired for interesting thoughts<br>
     Learn something about yourself<br>
     Learn something about others
   </p>
-  <button><a class="nav-link text-dark" [routerLink]="['/questionnaires/fill/1']">Start your Quest</a></button>
+  <button>
+    <a class="nav-link text-dark" [routerLink]="['/questionnaires/fill/1']">Start your Quest</a>
+  </button>
 </div>
 
-<div class="actionbox abinspire">
-  <a class="nav-link text-dark" [routerLink]="['/questionnaires/read/1']">Read Prousts Answers</a>
+<div class="actionbox abinspire bglightgreen">
+  <button>
+    <a class="nav-link text-dark" [routerLink]="['/questionnaires/read/1']">Read Prousts Answers</a>
+  </button>
 </div>
-<div class="actionbox ababout">
+<div class="actionbox ababout bgyellow">
+  <button>
   <a class="nav-link text-dark" [routerLink]="['/about']">About the Proust Questionnaire</a>
+</button>
 </div>
-<div class="actionbox ababout">
-  <a class="nav-link text-dark" [routerLink]="['/list']">See Questionnaires</a>
+<div class="actionbox ablist bgazure">
+  <button>
+  <a class="nav-link text-dark" [routerLink]="['/questionnaires/list']">See Questionnaires</a>
+</button>
 </div>
 <!--<h3>Learn something about yourself.. </h3> --
 <h3>.. and others
