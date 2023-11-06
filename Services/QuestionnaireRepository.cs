@@ -75,6 +75,23 @@ public class QuestionnaireRepository
     public List<Questionnaire> List(string filter = "", int take = 0, int skip = 0)
     {
         var questionnaires = new List<Questionnaire>();
+        
+        if(filter.Equals("unresponded"))
+        {
+            var q1 = new Questionnaire();
+            q1.Id = 1;
+            q1.Author = "Marcel Proust";
+            q1.Topic = "The original Questionnaire";
+            questionnaires.Add(q1);
+
+            var q2 = new Questionnaire();
+            q2.Id = 2;
+            q2.Author = "Ernest Hemmingway";
+            q2.Topic = "Asking the sea";
+            questionnaires.Add(q2);
+
+            return questionnaires;
+        }
 
         var sql = "Select * from quests ";
 
@@ -140,7 +157,7 @@ public class QuestionnaireRepository
         {
             Id = 1,
             Author = "Marcel Proust",
-            Topic = "",
+            Topic = "Original Proust Questionnaire",
             ResponseAuthor = "Marcel Proust",
             Dialogs = new Dictionary<string, string>
             {

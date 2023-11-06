@@ -1,13 +1,16 @@
 <h1 id="tableLabel">Proust's own Questionnaire</h1>
 
-<p>This component loads Proust's Questionnaire data from the server.</p>
+<p>Select </p>
 
 <p *ngIf="!questionnaires"><em>Loading...</em></p>
 
 <hr>
 
-<ul>
-  <li *ngFor="let questionnaire of questionnaires">
-    {{ questionnaire.id }} - <a class="nav-link text-dark" [routerLink]="['/questionnaires/read/{{ questionnaire.id }}']">Read Prousts Answers</a>
-  </li>
-</ul>
+<table>
+  <tr *ngFor="let questionnaire of questionnaires">
+    <td> {{ questionnaire.id }} </td><td> {{ questionnaire.topic }} </td><td> {{ questionnaire.author }} </td>
+    <td>
+        <a class="nav-link text-dark" [routerLink]="['/questionnaires/read/', questionnaire.id]">Read</a>
+      </td>
+  </tr>
+</table>

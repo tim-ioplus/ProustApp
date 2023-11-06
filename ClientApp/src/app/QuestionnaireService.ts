@@ -47,6 +47,7 @@ export class QuestionnaireService {
     //
     public List(viewfilter: string = '', datafilter: string = ''): Observable<Questionnaire[]>  
     {
+        //return new Observable<Questionnaire[]>
         return this.http.get<Questionnaire[]>(this.fullUrl + '/' + viewfilter + '/' + datafilter);
     }
 
