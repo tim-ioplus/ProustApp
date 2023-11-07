@@ -68,9 +68,10 @@ public class QuestionnaireService
 
     /// <summary>
     /// Lists the saved Questionnaires from the database.
-    /// Needs to offer four different projections 
+    /// Showsonly Base Data, not Dialogs
+    /// Needs to offer few different projections 
     /// </summary>
-    /// <param name="filter"></param>
+    /// <param name="filter">'list' for filled Questionnaire, 'choose' for questionnaires to fill out</param>
     /// <param name="take"></param>
     /// <param name="skip"></param>
     /// <returns></returns>
