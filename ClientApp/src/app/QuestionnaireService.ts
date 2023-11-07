@@ -8,13 +8,13 @@ import { Questionnaire } from './Questionnaire';
 })
 
 export class QuestionnaireService {
-    private resourceUrl = 'questionnaires';
+    private resourceFragment = 'questionnaires';
     private httpClient: any;
     private fullUrl=''; 
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string,) {
         this.httpClient = http;
-        this.fullUrl = baseUrl + this.resourceUrl;
+        this.fullUrl = baseUrl + this.resourceFragment;
     }
 
    
@@ -41,22 +41,21 @@ export class QuestionnaireService {
     }
 
     // 
-    // Filter Questionnaires for View and Data
-    // 1. View: a) list, b) details
-    // 2. Data: a) unresponsed Questionnaires b) responsed Questionnaires  
-    //
-    public List(viewfilter: string = '', datafilter: string = ''): Observable<Questionnaire[]>  
+    // Gets List-View of Questionnaires 
+    // 1. 'choose' empty Questionnaires 
+    // 2. 'list' filled out Questionnaires  
+    // 
+    public List(datafilter: string = ''): Observable<Questionnaire[]>  
     {
-        //return new Observable<Questionnaire[]>
-        return this.http.get<Questionnaire[]>(this.fullUrl + '/' + viewfilter + '/' + datafilter);
+        return this.http.get<Questionnaire[]>(this.fullUrl + '/list/' + datafilter);
     }
 
+    //
+    //
+    //
     GetFromDOM(document: any) : Observable<Questionnaire> 
     {
-        return new Observable<Questionnaire>((observer) => {
-            // Emit a value (in this case, a number)
-            //observer.next(42);
-            
+        return new Observable<Questionnaire>((observer) => {          
             var questionnaireIdElement = <HTMLInputElement> document.getElementsByName('questionnaire-id')[0];
             var questionnaireAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-author')[0];
             var questionnaireTopicElement = <HTMLInputElement> document.getElementsByName('questionnaire-topic')[0];
@@ -87,7 +86,6 @@ export class QuestionnaireService {
 
             observer.next(newquestionnaire);
 
-            // Complete the observable
             observer.complete();
         });        
     }
