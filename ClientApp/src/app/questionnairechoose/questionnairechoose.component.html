@@ -1,0 +1,16 @@
+<h1 id="tableLabel">Choose a Questionnaire</h1>
+
+<p>Select </p>
+
+<p *ngIf="!questionnaires"><em>Loading...</em></p>
+
+<hr>
+
+<table>
+  <tr *ngFor="let questionnaire of questionnaires">
+    <td> {{ questionnaire.id }} </td><td> {{ questionnaire.topic }} </td><td> {{ questionnaire.author }} </td>
+    <td>
+          <a class="nav-link text-dark" [routerLink]="['/questionnaires/fill/', questionnaire.id]">Fill</a>
+      </td>
+  </tr>
+</table>

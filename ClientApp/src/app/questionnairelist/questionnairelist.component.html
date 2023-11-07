@@ -1,4 +1,4 @@
-<h1 id="tableLabel">Proust's own Questionnaire</h1>
+<h1 id="tableLabel">Read a Questionnaire</h1>
 
 <p>Select </p>
 
@@ -8,7 +8,7 @@
 
 <table>
   <tr *ngFor="let questionnaire of questionnaires">
-    <td> {{ questionnaire.id }} </td><td> {{ questionnaire.topic }} </td><td> {{ questionnaire.author }} </td>
+    <td> {{ questionnaire.id }} </td><td> {{ questionnaire.topic }} </td><td> {{ questionnaire.author }} </td><td> {{ questionnaire.responseAuthor }}</td>
     <td>
         <a class="nav-link text-dark" [routerLink]="['/questionnaires/read/', questionnaire.id]">Read</a>
       </td>

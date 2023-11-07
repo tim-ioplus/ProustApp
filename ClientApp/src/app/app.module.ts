@@ -12,10 +12,11 @@ import { QuestionnaireCreateComponent } from './questionnairecreate/questionnair
 import { QuestionnaireDetailComponent } from './questionnairedetail/questionnairedetail.component';
 import { QuestionnaireEditComponent }   from './questionnaireedit/questionnaireedit.component'; 
 import { QuestionnaireFillComponent }   from './questionnairefill/questionnairefill.component';
+import { QuestionnaireChooseComponent } from './questionnairechoose/questionnairechoose.component';
 import { QuestionnaireListComponent }   from './questionnairelist/questionnairelist.component';
-import { AboutComponent }   from './about/about.component';
-import { ContactComponent }   from './about/contact.component';
-import { ImprintComponent } from './about/imprint.component';
+import { AboutComponent }               from './about/about.component';
+import { ContactComponent }             from './about/contact.component';
+import { ImprintComponent }             from './about/imprint.component';
 
 const routes: Routes = [
   //
@@ -24,6 +25,7 @@ const routes: Routes = [
   // Lists new or filled out Questionnaires 
   { path: 'questionnaires', component: QuestionnaireListComponent },
   { path: 'questionnaires/list', component: QuestionnaireListComponent },
+  { path: 'questionnaires/choose', component: QuestionnaireChooseComponent },
   // 
   // View a Questionnaire, either blank or filled out
   { path: 'questionnaires/:id', component: QuestionnaireDetailComponent },
@@ -56,7 +58,8 @@ const routes: Routes = [
     QuestionnaireListComponent,
     QuestionnaireDetailComponent,
     QuestionnaireEditComponent,
-    QuestionnaireFillComponent
+    QuestionnaireFillComponent,
+    QuestionnaireChooseComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
