@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router';
-import { QuestionnaireService } from "../QuestionnaireService";
-import { Questionnaire } from "../Questionnaire";
+import { QuestService } from "../QuestService";
+import { Quest } from "../Quest";
 import { Dialog } from "../Dialog";
 
 @Component({
@@ -14,7 +14,7 @@ import { Dialog } from "../Dialog";
  
  export class QuestionnaireEditComponent
  {    
-    public questionnaire: Questionnaire = 
+    public questionnaire: Quest = 
     {
         id: 0,
         author: '',
@@ -39,7 +39,7 @@ import { Dialog } from "../Dialog";
         var splits = document.URL.split('/');
         var id = splits[splits.length-1];         
                 
-        new QuestionnaireService(this.http, this.mybaseUrl).Read(id)
+        new QuestService(this.http, this.mybaseUrl).Read(id)
         .subscribe(
             result => {
                 this.questionnaire = result;
@@ -62,10 +62,10 @@ import { Dialog } from "../Dialog";
 
     onSubmit():void 
     {
-        new QuestionnaireService(this.http, this.mybaseUrl).GetFromDOM(document)
-        .subscribe((questionnaire: Questionnaire) => 
+        new QuestService(this.http, this.mybaseUrl).GetFromDOM(document)
+        .subscribe((questionnaire: Quest) => 
             {
-                new QuestionnaireService(this.http, this.mybaseUrl).Update(questionnaire)
+                new QuestService(this.http, this.mybaseUrl).Update(questionnaire)
                 .subscribe((updateResult : boolean) => 
                 {
                    this.router.navigate(['quests', questionnaire.id]);

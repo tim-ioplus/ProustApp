@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Questionnaire } from "../Questionnaire";
-import { QuestionnaireService } from "../QuestionnaireService";
+import { Quest } from "../Quest";
+import { QuestService } from "../QuestService";
 import {RouterModule} from '@angular/router';
 
 @Component({
@@ -11,11 +11,11 @@ import {RouterModule} from '@angular/router';
  
  export class QuestionnaireChooseComponent
  {
-   public questionnaires: Questionnaire[] | undefined;
+   public questionnaires: Quest[] | undefined;
 
    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
    {
-      new QuestionnaireService(http, baseUrl).List("choose")
+      new QuestService(http, baseUrl).List("choose")
       .subscribe(result => 
          {
              this.questionnaires = result;

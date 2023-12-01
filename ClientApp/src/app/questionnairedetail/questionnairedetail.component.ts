@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router';
-import { Questionnaire } from "../Questionnaire";
+import { Quest } from "../Quest";
 import { Dialog } from "../Dialog";
-import { QuestionnaireService } from "../QuestionnaireService";
+import { QuestService } from "../QuestService";
 
 @Component({
     selector: 'app-questionnairedetail',
@@ -14,7 +14,7 @@ import { QuestionnaireService } from "../QuestionnaireService";
  
  export class QuestionnaireDetailComponent
  {    
-    public questionnaire: Questionnaire = 
+    public questionnaire: Quest = 
     {
         id: 0,
         author: '',
@@ -35,7 +35,7 @@ import { QuestionnaireService } from "../QuestionnaireService";
         var splits = document.URL.split('/');
         var id = splits[splits.length-1];         
         
-        new QuestionnaireService(httpc, baseUrl).Read(id)
+        new QuestService(httpc, baseUrl).Read(id)
         .subscribe(result => 
             {
                 this.questionnaire = result;

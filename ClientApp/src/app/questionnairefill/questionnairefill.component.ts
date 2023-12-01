@@ -2,8 +2,8 @@ import { Component, Inject } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { ignoreElements } from "rxjs";
 import {Router} from '@angular/router';
-import { Questionnaire } from "../Questionnaire";
-import { QuestionnaireService } from "../QuestionnaireService";
+import { Quest } from "../Quest";
+import { QuestService } from "../QuestService";
 
 @Component({
     selector: 'app-questionnairefill',
@@ -12,7 +12,7 @@ import { QuestionnaireService } from "../QuestionnaireService";
  
  export class QuestionnaireFillComponent
  {
-    public questionnaire: Questionnaire = 
+    public questionnaire: Quest = 
     {
         id: 0,
         author: '',
@@ -35,9 +35,9 @@ import { QuestionnaireService } from "../QuestionnaireService";
 
     onSubmit():void 
     {
-        new QuestionnaireService(this.http, this.mybaseUrl).GetFromDOM(document)
+        new QuestService(this.http, this.mybaseUrl).GetFromDOM(document)
         .subscribe(newquestionnaire =>{
-            new QuestionnaireService(this.http, this.mybaseUrl).Create(newquestionnaire)
+            new QuestService(this.http, this.mybaseUrl).Create(newquestionnaire)
             .subscribe(
                 (result: number) => 
                 {

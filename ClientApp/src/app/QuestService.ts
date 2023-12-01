@@ -1,14 +1,15 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Questionnaire } from './Questionnaire';
+import { Quest } from './Quest';
 
 @Injectable({
   providedIn: 'root',
 })
 
-export class QuestionnaireService {
-    private resourceFragment = 'questionnaires';
+export class QuestService 
+{
+    private resourceFragment = 'quest';
     private httpClient: any;
     private fullUrl=''; 
 
@@ -18,18 +19,18 @@ export class QuestionnaireService {
     }
 
    
-    public Create(questionnaire: Questionnaire): Observable<number> 
+    public Create(questionnaire: Quest): Observable<number> 
     {
         return this.http.post<number>(this.fullUrl, questionnaire);
     }
 
-    public Read(id: string): Observable<Questionnaire> 
+    public Read(id: string): Observable<Quest> 
     {
         var resourceUrl = this.fullUrl + '/' + id;
-        return this.http.get<Questionnaire>(resourceUrl);
+        return this.http.get<Quest>(resourceUrl);
     }
 
-    public Update(questionnaire: Questionnaire): Observable<boolean> 
+    public Update(questionnaire: Quest): Observable<boolean> 
     {
         return this.http.put<boolean>(this.fullUrl, questionnaire);
     }
@@ -45,23 +46,23 @@ export class QuestionnaireService {
     // 1. 'choose' empty Questionnaires 
     // 2. 'list' filled out Questionnaires  
     // 
-    public List(datafilter: string = ''): Observable<Questionnaire[]>  
+    public List(datafilter: string = ''): Observable<Quest[]>  
     {
-        return this.http.get<Questionnaire[]>(this.fullUrl + '/list/' + datafilter);
+        return this.http.get<Quest[]>(this.fullUrl + '/list/' + datafilter);
     }
 
     //
     //
     //
-    GetFromDOM(document: any) : Observable<Questionnaire> 
+    GetFromDOM(document: any) : Observable<Quest> 
     {
-        return new Observable<Questionnaire>((observer) => {          
+        return new Observable<Quest>((observer) => {          
             var questionnaireIdElement = <HTMLInputElement> document.getElementsByName('questionnaire-id')[0];
             var questionnaireAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-author')[0];
             var questionnaireTopicElement = <HTMLInputElement> document.getElementsByName('questionnaire-topic')[0];
             var questionnaireResponseAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-responseauthor')[0];
 
-            var newquestionnaire: Questionnaire = 
+            var newquestionnaire: Quest = 
             {
                 id: parseInt(questionnaireIdElement.value),
                 author: questionnaireAuthorElement.value,

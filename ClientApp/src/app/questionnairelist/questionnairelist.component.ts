@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Questionnaire } from "../Questionnaire";
-import { QuestionnaireService } from "../QuestionnaireService";
+import { Quest } from "../Quest";
+import { QuestService } from "../QuestService";
 
 @Component({
     selector: 'app-questionnairelist',
@@ -10,11 +10,11 @@ import { QuestionnaireService } from "../QuestionnaireService";
  
  export class QuestionnaireListComponent
  {
-   public questionnaires: Questionnaire[] | undefined;
+   public questionnaires: Quest[] | undefined;
 
    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
    {
-      new QuestionnaireService(http, baseUrl).List("list")
+      new QuestService(http, baseUrl).List("list")
       .subscribe(result => 
          {
              this.questionnaires = result;

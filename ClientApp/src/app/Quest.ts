@@ -1,4 +1,4 @@
-export interface Questionnaire
+export interface Quest
  {
     id: number;
     author: string;
