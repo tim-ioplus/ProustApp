@@ -1,3 +1,6 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace ProustApp.Domain;
 
 /// <summary>
@@ -9,7 +12,9 @@ public class Questionnaire
     /// <summary>
     /// Unique Identifier for Questionnaire
     /// </summary>
-    public int Id { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
     /// <summary>
     /// Who is asking the Questions
     /// </summary>
@@ -26,4 +31,11 @@ public class Questionnaire
     /// Questions and correponding Answers in Key-Value Form
     /// </summary>                
     public Dictionary<string, string>? Dialogs {get; set;}
+}
+
+public class QuestStoreDatabaseSettings
+{
+    public string ConnectionString { get; set; } = null!;
+    public string DatabaseName { get; set; } = null!;
+    public string QuestsCollectionName { get; set; } = null!;
 }

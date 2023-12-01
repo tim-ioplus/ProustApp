@@ -1,8 +1,14 @@
+using ProustApp.Domain;
+using ProustApp.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllersWithViews();
+// Add Db Service
+builder.Services.Configure<QuestStoreDatabaseSettings>(
+    builder.Configuration.GetSection("QuestStoreDatabase"));
+builder.Services.AddSingleton<QuestsService>();
 
 var app = builder.Build();
 

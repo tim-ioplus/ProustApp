@@ -1,172 +1,31 @@
-using System.Collections.Generic;
-using System.Linq;
 using ProustApp.Domain;
 
 namespace ProustApp.Services;
-public class QuestionnaireRepository 
+public class QuestDataHelper
 {
-    private object? _dataConnection = null;
-    public string Create(Questionnaire questionnaire)
+     #region 'Data Helper'
+    
+    public List<Questionnaire> Get()
     {
-        var questionnaireId = "";
-
-        if(questionnaire != null)
+        var mockData = new List<Questionnaire>
         {
-            questionnaireId = Guid.NewGuid().ToString();
-            var sql = "Insert into quests";
-            // todo send statement and read result
-            bool success = false;
-            if(!success)
-            {
-                questionnaireId = "";
-            }
-        }
+            GetMockData("1"),
+            GetMockData("2"),
+            GetMockData("3"),
+            GetMockData("4")
+        };
 
-        return questionnaireId;
-    }
-    public Questionnaire? Read(int questionnaireId)
-    {
-        Questionnaire? questionnaire = null;
-        
-        if(_dataConnection == null)
-        {
-            questionnaire = GetMockData(questionnaireId);
-        }
-
-        if(questionnaire == null)
-        {
-            var sql = "Select * from quests where id=" + questionnaireId + ";";
-            object result = null; 
-            //@todo read from reader
-            if(result != null)
-            {
-                var dataResult = new Dictionary<string, string>();
-                //@todo parse dataResult from result
-                questionnaire = ParseResult(dataResult);
-            }
-        }
-
-        return questionnaire;
-    }
-
-    public bool Update(Questionnaire questionnaire)
-    {
-        if(questionnaire !=null)
-        {
-            var sql = "Update quests set answertext='" + questionnaire + ",  where id= " + questionnaire.Id + ";";
-            // @todo send stament and read result
-            return true;
-        }
-
-        return false;
-    }
-
-    public bool Delete(int questionnaireId)
-    {
-        if(questionnaireId > 0)
-        {
-            var sql = "Delete from quests where id="+questionnaireId+";";
-            // @todo send statement and read result;
-            return true;
-        }
-
-        return false;
+        return mockData; 
     }
     
-    public List<Questionnaire> List(string filter = "", int take = 0, int skip = 0)
+
+    public Questionnaire GetMockData(string questionnaireId)
     {
-        var questionnaires = new List<Questionnaire>();
-        
-        if(filter.Equals("list"))
-        {
-            var q1 = GetMockData(2);
-            q1.Dialogs.Clear();
-            questionnaires.Add(q1);
-
-            var q2 = GetMockData(4);
-            q2.Dialogs.Clear();
-            questionnaires.Add(q2);
-
-            return questionnaires;
-        }
-        else if(filter.Equals("choose"))
-        {
-            var q1 = GetMockData(1);
-            q1.Dialogs.Clear();
-            questionnaires.Add(q1);
-
-            var q2 = GetMockData(3);
-            q2.Dialogs.Clear();
-            questionnaires.Add(q2);
-
-            return questionnaires;
-        }
-
-        var sql = "Select * from quests ";
-
-        if(!string.IsNullOrEmpty(filter) && filter.Equals("filled"))
-        {
-            sql += " where ResponseAuthor='' ";
-        }
-        
-        if(take >0)
-        {
-            sql += "take=" + take + " ";
-        }
-
-        if(skip >0)
-        {
-            sql += "skip = " + skip + " ";            
-        }
-       
-        sql += ";";
-
-        
-        var dataResults = new List<object>();
-        // @todo send statement and read results
-
-        if(dataResults.Any())
-        {
-            questionnaires = ParseResults(dataResults);
-        }
-
-        return questionnaires;
-    }
-    
-    public List<Questionnaire> ParseResults(List<object> dataResults)
-    {
-        var questionnaires = new List<Questionnaire>();
-
-        foreach(IDictionary<string, string> dataResult in dataResults)
-        {
-            var questionnaire = ParseResult(dataResult);
-            questionnaires.Add(questionnaire);
-        }
-
-        return questionnaires;
-    }
-
-    public Questionnaire? ParseResult(IDictionary<string, string> dataResult)
-    {
-        var questionnaire = new Questionnaire();
-
-        if(dataResult.Any())
-        {
-            //@todo parse Dictionary result to Quest Object
-        }
-
-        return questionnaire;
-    } 
-
-    #region 'Data Helper'
-
-    public Questionnaire GetMockData(int questionnaireId)
-    {
-        if(questionnaireId==1) 
+        if(questionnaireId=="1") 
         {
             var questionnaire = new Questionnaire
             {
-                Id = 1,
+                Id = "1",
                 Author = "Marcel Proust",
                 Topic = "Original Proust Questionnaire",
                 ResponseAuthor = "",
@@ -196,11 +55,11 @@ public class QuestionnaireRepository
 
             return questionnaire;
         }
-        if(questionnaireId==2) 
+        if(questionnaireId=="2") 
         {
             var questionnaire = new Questionnaire
             {
-                Id = 2,
+                Id = "2",
                 Author = "Marcel Proust",
                 Topic = "Original Proust Questionnaire",
                 ResponseAuthor = "Marcel Proust",
@@ -232,11 +91,11 @@ public class QuestionnaireRepository
             return questionnaire;
         }
         
-        else if(questionnaireId==3) 
+        else if(questionnaireId=="3") 
         {
             var questionnaire = new Questionnaire
             {
-                Id = 3,
+                Id = "3",
                 Author = "George Plimpton",
                 Topic = "Asking the sea",
                 ResponseAuthor = "",
@@ -250,11 +109,11 @@ public class QuestionnaireRepository
 
             return questionnaire;
         }
-        else if(questionnaireId==4) 
+        else if(questionnaireId=="4") 
         {
             var questionnaire = new Questionnaire
             {
-                Id = 4,
+                Id = "4",
                 Author = "George Plimpton",
                 Topic = "Asking the sea",
                 ResponseAuthor = "Ernest Hemmingway",
