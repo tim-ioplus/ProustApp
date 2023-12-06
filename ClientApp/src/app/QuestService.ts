@@ -9,11 +9,11 @@ import { Quest } from './Quest';
 
 export class QuestService 
 {
-    private resourceFragment = 'quest';
-    private httpClient: any;
+    private resourceFragment = 'api/quest';
+    private httpClient: HttpClient;
     private fullUrl=''; 
 
-    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string,) {
+    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.httpClient = http;
         this.fullUrl = baseUrl + this.resourceFragment;
     }
@@ -21,24 +21,25 @@ export class QuestService
    
     public Create(questionnaire: Quest): Observable<number> 
     {
-        return this.http.post<number>(this.fullUrl, questionnaire);
+        return this.httpClient.post<number>(this.fullUrl, questionnaire);
     }
 
     public Read(id: string): Observable<Quest> 
     {
         var resourceUrl = this.fullUrl + '/' + id;
-        return this.http.get<Quest>(resourceUrl);
+        console.log("Read quest " + resourceUrl);
+        return this.httpClient.get<Quest>(resourceUrl);
     }
 
     public Update(questionnaire: Quest): Observable<boolean> 
     {
-        return this.http.put<boolean>(this.fullUrl, questionnaire);
+        return this.httpClient.put<boolean>(this.fullUrl, questionnaire);
     }
 
     public Delete(id: number): Observable<boolean> 
     {
         var resourceUrl = this.fullUrl + '/' + id;
-        return this.http.delete<boolean>(resourceUrl);
+        return this.httpClient.delete<boolean>(resourceUrl);
     }
 
     // 
@@ -48,7 +49,7 @@ export class QuestService
     // 
     public List(datafilter: string = ''): Observable<Quest[]>  
     {
-        return this.http.get<Quest[]>(this.fullUrl + '/list/' + datafilter);
+        return this.httpClient.get<Quest[]>(this.fullUrl + '/list/' + datafilter);
     }
 
     //

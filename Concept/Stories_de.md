@@ -23,7 +23,7 @@ Die Proust-Quests-App möchte es erleichtern diese Gedanken zu inspirieren, fest
 
 ## Persona
 
-Alle Leute die aufgrund mangelnder Zeit, räumlicher Distanz, persönlicher Veranlagung _oder ähnliches etc_ etwas Unterstützung möchten um Nähe mit aufrecht zu erhalten oder Freundschaften weiterzuentwickeln.
+Alle Leute die Freude daran haben mithilfe von interessanten, ggf provokanten Fragen zu sich selbst und andere zu reflektieren.
 
 ## User Stories
 
@@ -59,13 +59,13 @@ Als potentieller Benutzer der 'ProustApp' möchte ich einen Eindruck davon erhal
 
 * zeigt ein kleines portrait Bild von Proust
 * zeigt einladend den Titel der App
-  * 'Willkommen zur ProustApp'
+  * Text in etwa 'Willkommen zur ProustApp'
 * zeigt kurz die Benefits der App
   * zu interessanten Gedanken inspirieren
   * etwas über sich selbst lernen
   * etwas über andere lernen
-* link zu eigenem Dialog '/dialog/new'
-* link zu Proust's Questionnaire Dialog '/dialog/1'
+* link zu eigenem Quest '/quest/fill'
+* link zu Proust's Questionnaire Dialog '/quest/1'
 * Mock
   * ![Mockup Intro](ProustApp_Intro_v0.png)
 
@@ -74,7 +74,7 @@ Als potentieller Benutzer der 'ProustApp' möchte ich einen Eindruck davon erhal
 
 #### Story
 
-Als .. möchte ich die Fragen aus Dem Proust Questionnaire lesen und damit für interessante Gedanken und Gespräche inspiriert zu werden.
+Als .. möchte ich die Fragen aus dem Proust Questionnaire lesen und damit für interessante Gedanken und Gespräche inspiriert zu werden.
 
 #### Kriterien
 

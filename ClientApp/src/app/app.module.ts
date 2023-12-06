@@ -8,12 +8,12 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 
-import { QuestionnaireCreateComponent } from './questionnairecreate/questionnairecreate.component';
+//import { QuestionnaireCreateComponent } from './questionnairecreate/questionnairecreate.component';
 import { QuestionnaireDetailComponent } from './questionnairedetail/questionnairedetail.component';
-import { QuestionnaireEditComponent }   from './questionnaireedit/questionnaireedit.component'; 
+//import { QuestionnaireEditComponent }   from './questionnaireedit/questionnaireedit.component'; 
 import { QuestionnaireFillComponent }   from './questionnairefill/questionnairefill.component';
-import { QuestionnaireChooseComponent } from './questionnairechoose/questionnairechoose.component';
-import { QuestionnaireListComponent }   from './questionnairelist/questionnairelist.component';
+//import { QuestionnaireChooseComponent } from './questionnairechoose/questionnairechoose.component';
+//import { QuestionnaireListComponent }   from './questionnairelist/questionnairelist.component';
 import { AboutComponent }               from './about/about.component';
 import { ContactComponent }             from './about/contact.component';
 import { ImprintComponent }             from './about/imprint.component';
@@ -23,22 +23,24 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   //
   // Lists new or filled out Questionnaires 
+  /*
   { path: 'questionnaires', component: QuestionnaireListComponent },
   { path: 'questionnaires/list', component: QuestionnaireListComponent },
   { path: 'questionnaires/choose', component: QuestionnaireChooseComponent },
+  */
   // 
   // View a Questionnaire, either blank or filled out
   { path: 'questionnaires/:id', component: QuestionnaireDetailComponent },
-  { path: 'questionnaires/read/:id', component: QuestionnaireDetailComponent },
+  { path: 'quest/read/:id', component: QuestionnaireDetailComponent },
   //
   // Create a new Questionnaire
-  { path: 'questionnaires/create', component: QuestionnaireCreateComponent },
+  // { path: 'questionnaires/create', component: QuestionnaireCreateComponent },
   //
   // Edit an existing Questionnaire
-  { path: 'questionnaires/edit/:id', component: QuestionnaireEditComponent },
+  // { path: 'questionnaires/edit/:id', component: QuestionnaireEditComponent },
   //
   // Fill out an existing Questionnaire
-  { path: 'questionnaires/fill/:id', component: QuestionnaireFillComponent },
+  { path: 'quest/fill/:id', component: QuestionnaireFillComponent },
   //
   // Info about Questionnaire
   { path: 'about', component: AboutComponent },
@@ -55,11 +57,14 @@ const routes: Routes = [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    QuestionnaireListComponent,
     QuestionnaireDetailComponent,
+    QuestionnaireFillComponent
+    /*
+    QuestionnaireListComponent,
+    QuestionnaireCreateComponent,
     QuestionnaireEditComponent,
-    QuestionnaireFillComponent,
     QuestionnaireChooseComponent
+    */
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

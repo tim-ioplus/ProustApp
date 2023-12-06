@@ -4,6 +4,8 @@ import { ignoreElements } from "rxjs";
 import {Router} from '@angular/router';
 import { Quest } from "../Quest";
 import { QuestService } from "../QuestService";
+import { Dialog } from "../Dialog";
+
 
 @Component({
     selector: 'app-questionnairefill',
@@ -21,6 +23,8 @@ import { QuestService } from "../QuestService";
         dialogs:  new Map<string, string>()  
     }
 
+    public questionnaireAmountQuestions: number = 0; 
+    public dialogx: Dialog[] = [];
     public mybaseUrl = 'BASE_URL';
     http: any;
     router: Router;
@@ -30,7 +34,33 @@ import { QuestService } from "../QuestService";
         this.http = httpc;
         this.mybaseUrl = baseUrl;
         this.router = routerc;
-        // Do not laod questionnaire data, its going to be created here        
+        
+        var splits = document.URL.split('/');
+        var id = splits[splits.length-1];         
+        
+        new QuestService(httpc, baseUrl).Read(id)
+        .subscribe(result => 
+        {
+            this.questionnaire = result;
+            
+
+            for (const [key, value] of Object.entries(this.questionnaire.dialogs)) 
+            {
+                this.questionnaireAmountQuestions++;
+                
+                var dx: Dialog = 
+                {
+                    question: key,
+                    answer: '',
+                    number: this.questionnaireAmountQuestions
+                };
+                
+                this.dialogx.push(dx);
+            }
+
+            
+        }, 
+        error => console.error(error));
     }
 
     onSubmit():void 

@@ -4,7 +4,8 @@ using ProustApp.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options => {options.RespectBrowserAcceptHeader = true; });
+
 // Add Db Service
 builder.Services.Configure<QuestStoreDatabaseSettings>(
     builder.Configuration.GetSection("QuestStoreDatabase"));
@@ -26,7 +27,7 @@ app.UseRouting();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+    pattern: "api/{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");;
 

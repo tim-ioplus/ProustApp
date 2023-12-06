@@ -24,10 +24,7 @@ import { QuestService } from "../QuestService";
      }
 
     public questionnaireAmountQuestions: number = 0; 
-
     public dialogx: Dialog[] = [];
-
-
     public mybaseUrl = 'BASE_URL';
 
     constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string)
@@ -38,8 +35,7 @@ import { QuestService } from "../QuestService";
         new QuestService(httpc, baseUrl).Read(id)
         .subscribe(result => 
             {
-                this.questionnaire = result;
-                
+                this.questionnaire = result;                
 
                 for (const [key, value] of Object.entries(this.questionnaire.dialogs)) 
                 {

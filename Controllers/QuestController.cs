@@ -18,29 +18,36 @@ public class QuestController : ControllerBase
         _questService = questsService;
     }
 
-    // List unfilled
-    [HttpGet]
-
-    // List filled
-    [HttpGet]
-
-    // geT 1 ID
     [HttpGet("{id}")] 
-    public async Task<ActionResult<Questionnaire>> Get(string id)
+    public async Task<IActionResult> Get(string id)
     {
-        var quest = await _questService.ReadAsync(id);
-
-        if(quest==null) return NotFound();
-
-        return quest;
+        try
+        {
+            var quest = await _questService.ReadAsync(id);
+            if(quest==null) return NotFound("Data with id {id} not found.");
+            
+            return Ok(quest);
+        }
+        catch (Exception ex)
+        {
+            // _loger._LogError("");
+            return StatusCode(500, ex.Message);
+        }
     }
 
     [HttpPost]
-    public async Task<ActionResult> Post(Questionnaire newQuest)
+    public async Task<IActionResult> Post(Questionnaire newQuest)
     {
-        await _questService.CreateAsync(newQuest);
+        try
+        {
+            await _questService.CreateAsync(newQuest);
+            return CreatedAtAction(nameof(Get), new { id = newQuest.Id});
 
-        return CreatedAtAction(nameof(Get), new { id = newQuest.Id});
+        }
+        catch(Exception ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
     }
 
     [HttpPut("{id}")]
@@ -74,8 +81,4 @@ public class QuestController : ControllerBase
         
         return Ok();
     }
-
-
-
-
 }
