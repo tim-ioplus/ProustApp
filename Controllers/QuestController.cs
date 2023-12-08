@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ProustApp.Services;
@@ -23,16 +24,22 @@ public class QuestController : ControllerBase
     {
         try
         {
-            var quest = await _questService.ReadAsync(id);
+            var quest = await _questService.ReadAsync(int.Parse(id));
             if(quest==null) return NotFound("Data with id {id} not found.");
             
             return Ok(quest);
         }
         catch (Exception ex)
         {
-            // _loger._LogError("");
             return StatusCode(500, ex.Message);
         }
+    }
+
+    [HttpGet("list/{filter}")]
+    public async Task<IActionResult> List(string filter)
+    {   
+        var questionnaires = await _questService.ListAsync(filter);
+        return Ok(questionnaires);        
     }
 
     [HttpPost]
@@ -41,7 +48,7 @@ public class QuestController : ControllerBase
         try
         {
             await _questService.CreateAsync(newQuest);
-            return CreatedAtAction(nameof(Get), new { id = newQuest.Id});
+            return CreatedAtAction(nameof(Get), new { id = newQuest.qid});
 
         }
         catch(Exception ex)
@@ -53,7 +60,7 @@ public class QuestController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult> Update(string id, Questionnaire updatedQuest)
     {
-        var questToUpdate = await _questService.ReadAsync(id);
+        var questToUpdate = await _questService.ReadAsync(int.Parse(id));
 
         if(questToUpdate == null)
         {
@@ -62,7 +69,7 @@ public class QuestController : ControllerBase
 
         questToUpdate = updatedQuest;
         
-        await _questService.UpdateAsync(id, questToUpdate);
+        await _questService.UpdateAsync(int.Parse(id), questToUpdate);
         
         return NoContent();
     }
@@ -70,14 +77,14 @@ public class QuestController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(string id)
     {
-        var questToDelete = await _questService.ReadAsync(id);
+        var questToDelete = await _questService.ReadAsync(int.Parse(id));
 
         if(questToDelete == null)
         {
             return NotFound();
         }
 
-        await _questService.DeleteAsync(id);
+        await _questService.DeleteAsync(int.Parse(id));
         
         return Ok();
     }
