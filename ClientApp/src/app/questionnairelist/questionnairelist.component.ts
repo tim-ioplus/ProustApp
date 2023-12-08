@@ -14,7 +14,7 @@ import { QuestService } from "../QuestService";
 
    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
    {
-      new QuestService(http, baseUrl).List("list")
+      new QuestService(http, baseUrl).ListToRead()
       .subscribe(result => 
          {
              this.questionnaires = result;

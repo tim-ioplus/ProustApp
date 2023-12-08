@@ -45,11 +45,21 @@ export class QuestService
     // 
     // Gets List-View of Questionnaires 
     // 1. 'choose' empty Questionnaires 
-    // 2. 'list' filled out Questionnaires  
+    // 2. 'read' filled out Questionnaires  
     // 
     public List(datafilter: string = ''): Observable<Quest[]>  
     {
         return this.httpClient.get<Quest[]>(this.fullUrl + '/list/' + datafilter);
+    }
+
+    public ListToFill()
+    {
+        return this.List("fill");
+    }
+
+    public ListToRead()
+    {
+        return this.List("read");
     }
 
     //

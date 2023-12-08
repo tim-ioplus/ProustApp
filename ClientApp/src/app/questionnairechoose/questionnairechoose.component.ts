@@ -15,7 +15,7 @@ import {RouterModule} from '@angular/router';
 
    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
    {
-      new QuestService(http, baseUrl).List("choose")
+      new QuestService(http, baseUrl).ListToFill()
       .subscribe(result => 
          {
              this.questionnaires = result;
