@@ -1,0 +1,181 @@
+ /*
+    acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('657316fc2866a8e53be6f5dd'),
+    '1': ObjectId('657316fc2866a8e53be6f5de')
+  }
+  */
+
+  db.Quests.insertMany([
+    {
+        "qid": 0,
+        "guid": "",
+        "Author": "Marcel Proust",
+        "Topic": "The Proust Questionnaire",
+        "ResponseAuthor": "",
+        "Dialogs": [
+          {
+            "Question": "Your favourite virtue?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite qualities in a man?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite qualities in a woman?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your chief characteristic?",
+            "Answer": ""
+          },
+          {
+            "Question": "What you appreciate the most in your friends?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your main fault?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite occupation?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your idea of happiness?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your idea of misery?",
+            "Answer": ""
+          },
+          {
+            "Question": "If not yourself, who would you be?",
+            "Answer": ""
+          },
+          {
+            "Question": "Where would you like to live?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite colour?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite flower?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite bird?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite prose authors?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite poets?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite heroes in fiction?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite heroines in fiction?",
+            "Answer": ""
+          },
+          {
+            "Question": "Your favourite painters and composers?",
+            "Answer": ""
+          }
+        ]
+      },
+      {
+        "qid": 1,
+        "guid": "",
+        "Author": "Marcel Proust",
+        "Topic": "The Proust Questionnaire",
+        "ResponseAuthor": "Marcel Proust",
+        "Dialogs": [
+          {
+            "Question": "Your favourite virtue?",
+            "Answer": "The need to be loved; more precisely, the need to be caressed and spoiled much more than the need to be admired."
+          },
+          {
+            "Question": "Your favourite qualities in a man?",
+            "Answer": "Intelligence, moral sense."
+          },
+          {
+            "Question": "Your favourite qualities in a woman?",
+            "Answer": "Gentleness, naturalness, intelligence."
+          },
+          {
+            "Question": "Your chief characteristic?",
+            "Answer": " - "
+          },
+          {
+            "Question": "What you appreciate the most in your friends?",
+            "Answer": "To have tenderness for me, if their personage is exquisite enough to render quite high the price of their tenderness."
+          },
+          {
+            "Question": "Your main fault?",
+            "Answer": "Not knowing, not being able to want "
+          },
+          {
+            "Question": "Your favourite occupation?",
+            "Answer": "Reading, daydreaming, writing verse, history, theater."
+          },
+          {
+            "Question": "Your idea of happiness?",
+            "Answer": "To live in contact with those I love, with the beauties of nature, with a quantity of books and music, and to have, within easy distance, a French theater. "
+          },
+          {
+            "Question": "Your idea of misery?",
+            "Answer": "Not to have known my mother or my grandmother."
+          },
+          {
+            "Question": "If not yourself, who would you be?",
+            "Answer": "Myself, as the people whom I admire would like me to be."
+          },
+          {
+            "Question": "Where would you like to live?",
+            "Answer": "A country where certain things that I should like would come true as though by magic, and where tenderness would always be reciprocated."
+          },
+          {
+            "Question": "Your favourite colour?",
+            "Answer": "The beauty is not in the colors, but in their harmony."
+          },
+          {
+            "Question": "Your favourite flower?",
+            "Answer": "All of them"
+          },
+          {
+            "Question": "Your favourite bird?",
+            "Answer": "The swallow."
+          },
+          {
+            "Question": "Your favourite prose authors?",
+            "Answer": "Currently, Anatole France,Pierre Loti., George Sand, Aug. Thierry."
+          },
+          {
+            "Question": "Your favourite poets?",
+            "Answer": "Baudelaire and Alfred de Vigny. Musset."
+          },
+          {
+            "Question": "Your favourite heroes in fiction?",
+            "Answer": "Hamlet, those of romance and poetry, those who are the expression of an ideal rather than an imitation of the real."
+          },
+          {
+            "Question": "Your favourite heroines in fiction?",
+            "Answer": "Bérénice, a woman of genius leading an ordinary life."
+          },
+          {
+            "Question": "Your favourite painters and composers?",
+            "Answer": "Beethoven, Wagner, Schumann, Meissonier, Mozart, Gounod."
+          }
+        ]
+      }
+    ]
+    )

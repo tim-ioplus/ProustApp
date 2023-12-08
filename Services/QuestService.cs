@@ -10,15 +10,34 @@ public class QuestsService
 
     public QuestsService(IOptions<QuestStoreDatabaseSettings> questStoreDatabaseSettings)
     {
-        var mongoClient = new MongoClient(questStoreDatabaseSettings.Value.ConnectionString);
-        var mongoDatabase = mongoClient.GetDatabase(questStoreDatabaseSettings.Value.DatabaseName);
-        _questCollection = mongoDatabase.GetCollection<Questionnaire>(questStoreDatabaseSettings.Value.QuestsCollectionName);
-        var x = new QuestDataHelper().Get();
-        _questCollection.InsertMany(x);
+        new QuestsService(questStoreDatabaseSettings.Value);
     }
 
-    public async Task<List<Questionnaire>> ListAsync() => 
-        await _questCollection.Find(_ => true).ToListAsync();
+    public QuestsService(QuestStoreDatabaseSettings questStoreDatabaseSettingValues)
+    {
+        var mongoClient = new MongoClient(questStoreDatabaseSettingValues.ConnectionString);
+        var mongoDatabase = mongoClient.GetDatabase(questStoreDatabaseSettingValues.DatabaseName);
+        _questCollection = mongoDatabase.GetCollection<Questionnaire>(questStoreDatabaseSettingValues.QuestsCollectionName);
+    }
+
+    public async Task<List<Questionnaire>> ListAsync(string filter="")
+    {
+        if(filter.Equals("read"))
+        {
+            var collection = await ListFilledASync();
+            return collection;
+        }
+        if(filter.Equals("fill"))
+        {
+            var collection = await ListUnfilledAsync();
+            return collection;
+        }
+        else
+        {
+            var collection = await _questCollection.Find(_ => true).ToListAsync();
+            return collection;
+        }
+    }
 
     public async Task<List<Questionnaire>> ListUnfilledAsync() => 
         await _questCollection.Find(x => string.IsNullOrEmpty(x.ResponseAuthor)).ToListAsync();
@@ -26,15 +45,15 @@ public class QuestsService
     public async Task<List<Questionnaire>> ListFilledASync() => 
         await _questCollection.Find(x => !string.IsNullOrEmpty(x.ResponseAuthor)).ToListAsync(); 
     
-    public async Task<Questionnaire?> ReadAsync(string id) => 
-        await _questCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+    public async Task<Questionnaire?> ReadAsync(int id) => 
+        await _questCollection.Find(x => x.qid == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(Questionnaire newQuest) =>
         await _questCollection.InsertOneAsync(newQuest);
     
-    public async Task UpdateAsync(string id, Questionnaire updatedQuest) =>
-        await _questCollection.ReplaceOneAsync(x => x.Id==id, updatedQuest);
+    public async Task UpdateAsync(int id, Questionnaire updatedQuest) =>
+        await _questCollection.ReplaceOneAsync(x => x.qid==id, updatedQuest);
 
-    public async Task DeleteAsync(string id) => 
-        await _questCollection.DeleteOneAsync(x => x.Id==id);
+    public async Task DeleteAsync(int id) => 
+        await _questCollection.DeleteOneAsync(x => x.qid==id);
 }

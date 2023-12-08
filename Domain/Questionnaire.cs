@@ -14,7 +14,11 @@ public class Questionnaire
     /// </summary>
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string? Id { get; set; }
+    public string? _objectId { get; set; }
+    //
+    public int? qid { get; set; }
+    //
+    public string? guid { get; set; }
     /// <summary>
     /// Who is asking the Questions
     /// </summary>
@@ -30,7 +34,21 @@ public class Questionnaire
     /// <summary>
     /// Questions and correponding Answers in Key-Value Form
     /// </summary>                
-    public Dictionary<string, string>? Dialogs {get; set;}
+    //public Dictionary<string, string>? Dialogs {get; set;}
+    public List<Dialog>? Dialogs {get; set;}
+
+}
+
+public class Dialog
+{
+    public string? Question  { get; set;}
+    public string? Answer { get; set;}
+
+    public Dialog(string q, string a)
+    {
+        Question = q;
+        Answer = a;
+    }
 }
 
 public class QuestStoreDatabaseSettings

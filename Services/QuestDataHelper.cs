@@ -25,31 +25,31 @@ public class QuestDataHelper
         {
             var questionnaire = new Questionnaire
             {
-                Id = "1",
+                qid = 1,
                 Author = "Marcel Proust",
                 Topic = "Original Proust Questionnaire",
                 ResponseAuthor = "",
-                Dialogs = new Dictionary<string, string>
+                Dialogs = new List<Dialog>
                 {
-                    { "Your favourite virtue?",""},
-                    { "Your favourite qualities in a man?", "" },
-                    { "Your favourite qualities in a woman?", ""},
-                    { "Your chief characteristic?", ""}, 
-                    { "What you appreciate the most in your friends?", ""},
-                    { "Your main fault?", ""},
-                    { "Your favourite occupation?", ""},
-                    { "Your idea of happiness?", ""},
-                    { "Your idea of misery?", ""},
-                    { "If not yourself, who would you be?", ""},
-                    { "Where would you like to live?", ""},
-                    { "Your favourite colour?", ""},
-                    { "Your favourite flower?", ""},
-                    { "Your favourite bird?", ""},
-                    { "Your favourite prose authors?", ""},
-                    { "Your favourite poets?", ""},
-                    { "Your favourite heroes in fiction?", ""},
-                    { "Your favourite heroines in fiction?", ""},
-                    { "Your favourite painters and composers?", ""}
+                    { new Dialog("Your favourite virtue?","")},
+                    { new Dialog("Your favourite qualities in a man?", "" )},
+                    { new Dialog("Your favourite qualities in a woman?", "" )},
+                    { new Dialog("Your chief characteristic?", "" )}, 
+                    { new Dialog("What you appreciate the most in your friends?", "" )},
+                    { new Dialog("Your main fault?", "" )},
+                    { new Dialog("Your favourite occupation?", "" )},
+                    { new Dialog("Your idea of happiness?", "" )},
+                    { new Dialog("Your idea of misery?", "" )},
+                    { new Dialog("If not yourself, who would you be?", "" )},
+                    { new Dialog("Where would you like to live?", "" )},
+                    { new Dialog("Your favourite colour?", "" )},
+                    { new Dialog("Your favourite flower?", "" )},
+                    { new Dialog("Your favourite bird?", "" )},
+                    { new Dialog("Your favourite prose authors?", "" )},
+                    { new Dialog("Your favourite poets?", "" )},
+                    { new Dialog("Your favourite heroes in fiction?", "" )},
+                    { new Dialog("Your favourite heroines in fiction?", "" )},
+                    { new Dialog("Your favourite painters and composers?", "")}
                 }
             };  
 
@@ -59,32 +59,32 @@ public class QuestDataHelper
         {
             var questionnaire = new Questionnaire
             {
-                Id = "2",
+                qid = 2,
                 Author = "Marcel Proust",
                 Topic = "Original Proust Questionnaire",
                 ResponseAuthor = "Marcel Proust",
-                Dialogs = new Dictionary<string, string>
+                Dialogs = new List<Dialog>
                 {
-                    { "Your favourite virtue?", 
-                    "The need to be loved; more precisely, the need to be caressed and spoiled much more than the need to be admired."},
-                    {  "Your favourite qualities in a man?", "Intelligence, moral sense." },
-                    { "Your favourite qualities in a woman?", "Gentleness, naturalness, intelligence."},
-                    { "Your chief characteristic?", ""}, // @todo possibility to intentionally left blank
-                    { "What you appreciate the most in your friends?", "To have tenderness for me, if their personage is exquisite enough to render quite high the price of their tenderness."},
-                    { "Your main fault?", "Not knowing, not being able to want "},
-                    { "Your favourite occupation?", "Reading, daydreaming, writing verse, history, theater."},
-                    { "Your idea of happiness?", "To live in contact with those I love, with the beauties of nature, with a quantity of books and music, and to have, within easy distance, a French theater. "},
-                    { "Your idea of misery?", "Not to have known my mother or my grandmother."},
-                    { "If not yourself, who would you be?", "Myself, as the people whom I admire would like me to be."},
-                    { "Where would you like to live?", "A country where certain things that I should like would come true as though by magic, and where tenderness would always be reciprocated."},
-                    { "Your favourite colour?", "The beauty is not in the colors, but in their harmony."},
-                    { "Your favourite flower?", "All of them"},
-                    { "Your favourite bird?", "The swallow."},
-                    { "Your favourite prose authors?", "Currently, Anatole France,Pierre Loti., George Sand, Aug. Thierry."},
-                    { "Your favourite poets?", "Baudelaire and Alfred de Vigny. Musset."},
-                    { "Your favourite heroes in fiction?", "Hamlet, those of romance and poetry, those who are the expression of an ideal rather than an imitation of the real."},
-                    { "Your favourite heroines in fiction?", "Bérénice, a woman of genius leading an ordinary life."},
-                    { "Your favourite painters and composers?", "Beethoven, Wagner, Schumann, Meissonier, Mozart, Gounod."}
+                    { new Dialog("Your favourite virtue?", 
+                    "The need to be loved; more precisely, the need to be caressed and spoiled much more than the need to be admired." )},
+                    { new Dialog("Your favourite qualities in a man?", "Intelligence, moral sense.")},
+                    { new Dialog("Your favourite qualities in a woman?", "Gentleness, naturalness, intelligence." )},
+                    { new Dialog("Your chief characteristic?", "" )}, // @todo possibility to intentionally left blank
+                    { new Dialog("What you appreciate the most in your friends?", "To have tenderness for me, if their personage is exquisite enough to render quite high the price of their tenderness." )},
+                    { new Dialog("Your main fault?", "Not knowing, not being able to want " )},
+                    { new Dialog("Your favourite occupation?", "Reading, daydreaming, writing verse, history, theater." )},
+                    { new Dialog("Your idea of happiness?", "To live in contact with those I love, with the beauties of nature, with a quantity of books and music, and to have, within easy distance, a French theater. " )},
+                    { new Dialog("Your idea of misery?", "Not to have known my mother or my grandmother." )},
+                    { new Dialog("If not yourself, who would you be?", "Myself, as the people whom I admire would like me to be." )},
+                    { new Dialog("Where would you like to live?", "A country where certain things that I should like would come true as though by magic, and where tenderness would always be reciprocated." )},
+                    { new Dialog("Your favourite colour?", "The beauty is not in the colors, but in their harmony." )},
+                    { new Dialog("Your favourite flower?", "All of them" )},
+                    { new Dialog("Your favourite bird?", "The swallow." )},
+                    { new Dialog("Your favourite prose authors?", "Currently, Anatole France,Pierre Loti., George Sand, Aug. Thierry." )},
+                    { new Dialog("Your favourite poets?", "Baudelaire and Alfred de Vigny. Musset." )},
+                    { new Dialog("Your favourite heroes in fiction?", "Hamlet, those of romance and poetry, those who are the expression of an ideal rather than an imitation of the real." )},
+                    { new Dialog("Your favourite heroines in fiction?", "Bérénice, a woman of genius leading an ordinary life." )},
+                    { new Dialog("Your favourite painters and composers?", "Beethoven, Wagner, Schumann, Meissonier, Mozart, Gounod.")}
                 }
             };  
 
@@ -95,15 +95,15 @@ public class QuestDataHelper
         {
             var questionnaire = new Questionnaire
             {
-                Id = "3",
+                qid = 3,
                 Author = "George Plimpton",
                 Topic = "Asking the sea",
                 ResponseAuthor = "",
-                Dialogs = new Dictionary<string, string>
+                Dialogs = new List<Dialog>
                 {
-                    { "How long can you actually be productive on a daily basis? How do you know when to stop?", ""},
-                    { "Age is my alarm clock, why do old men wake so early? Is it to have one longer day?", ""},
-                    { "What is pain?", ""}
+                    { new Dialog("How long can you actually be productive on a daily basis? How do you know when to stop?", "" )},
+                    { new Dialog("Age is my alarm clock, why do old men wake so early? Is it to have one longer day?", "" )},
+                    { new Dialog("What is pain?", "")}
                 }
             };  
 
@@ -113,16 +113,16 @@ public class QuestDataHelper
         {
             var questionnaire = new Questionnaire
             {
-                Id = "4",
+                qid = 4,
                 Author = "George Plimpton",
                 Topic = "Asking the sea",
                 ResponseAuthor = "Ernest Hemmingway",
-                Dialogs = new Dictionary<string, string>
+                Dialogs = new List<Dialog>
                 {
-                    { "How long can you actually be productive on a daily basis? How do you know when to stop?", 
-                    "That's something you have to learn about yourself. The important thing is to work every day. I work from about seven until about noon. Then I go fishing or swimming, or whatever I want. The best way is always to stop when you are going good. If you do that you'll never be stuck. And don't think or worry about it until you start to write again the next day. That way your subconscious will be working on it all the time, but if you worry about it, your brain will get tired before you start again. But work every day. No matter what has happened the day or night before, get up and bite on the nail."},
-                    { "Age is my alarm clock, why do old men wake so early? Is it to have one longer day?", "I don’t know, all I know is that young boys sleep late and hard."},
-                    { "What is pain?", "The most painful thing is losing yourself in the process of loving someone too much, and forgetting that you are special too."}
+                    { new Dialog("How long can you actually be productive on a daily basis? How do you know when to stop?", 
+                    "That's something you have to learn about yourself. The important thing is to work every day. I work from about seven until about noon. Then I go fishing or swimming, or whatever I want. The best way is always to stop when you are going good. If you do that you'll never be stuck. And don't think or worry about it until you start to write again the next day. That way your subconscious will be working on it all the time, but if you worry about it, your brain will get tired before you start again. But work every day. No matter what has happened the day or night before, get up and bite on the nail." )},
+                    { new Dialog("Age is my alarm clock, why do old men wake so early? Is it to have one longer day?", "I don t know, all I know is that young boys sleep late and hard." )},
+                    { new Dialog("What is pain?", "The most painful thing is losing yourself in the process of loving someone too much, and forgetting that you are special too.")}
                 }
             };  
 

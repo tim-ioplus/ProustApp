@@ -32,10 +32,11 @@ Alle Leute die Freude daran haben mithilfe von interessanten, ggf provokanten Fr
 1. MVP \'V0.1'  
    1. Intro
    1. Fragen ansehen > Inspire
+   1. Prousts Antworten lesen
    1. Antworten eingeben > Reponse
    1. Antworten speichern > Memorise
    1. Lesezeichen > Bookmark
-   1. Veröffentlichen 
+   1. Veröffentlichen  
 1. v 0.2
    1. Personifizieren > Personify
    1. Teilen > Share
