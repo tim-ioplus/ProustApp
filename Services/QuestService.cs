@@ -48,9 +48,17 @@ public class QuestsService
     public async Task<Questionnaire?> ReadAsync(int id) => 
         await _questCollection.Find(x => x.qid == id).FirstOrDefaultAsync();
 
-    public async Task CreateAsync(Questionnaire newQuest) =>
+    private async Task createAsync(Questionnaire newQuest) =>
         await _questCollection.InsertOneAsync(newQuest);
-    
+
+    public async Task CreateAsync(Questionnaire newQuest)
+    {
+        newQuest.guid = Guid.NewGuid().ToString();
+
+        await createAsync(newQuest);
+    }
+
+
     public async Task UpdateAsync(int id, Questionnaire updatedQuest) =>
         await _questCollection.ReplaceOneAsync(x => x.qid==id, updatedQuest);
 
