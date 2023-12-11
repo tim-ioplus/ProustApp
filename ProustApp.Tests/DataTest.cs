@@ -8,25 +8,12 @@ namespace ProustApp.Tests;
 
 public class DataTest
 {
-    public QuestsService CreateService()
-    {
-        var s = new QuestStoreDatabaseSettings
-        {
-            ConnectionString = "mongodb://localhost:27017",
-            DatabaseName = "ProustApp",
-            QuestsCollectionName = "Quests"
-        };
-
-        var qs = new QuestsService(s);
-
-        return qs;
-    }
-
+    
     [Fact]
     public async void TestData()
     {
         bool _log = false;
-        var qs = CreateService();        
+        var qs = new QuestDataHelper().CreateService();        
 
         var res = await qs.ListAsync();
 
@@ -66,7 +53,7 @@ public class DataTest
     [InlineData(1)]
     public async void TestDataRead(int testQid)
     {
-        var qs = CreateService(); 
+        var qs = new QuestDataHelper().CreateService(); 
 
         var qx = await qs.ReadAsync(testQid);
         Assert.True(qx != null);
@@ -86,7 +73,7 @@ public class DataTest
     [InlineData(1, true)]
     public async void TestDataFilter_Filled(int testQid, bool testResult)
     {
-        var qs = CreateService(); 
+        var qs = new QuestDataHelper().CreateService(); 
 
         var quests = await qs.ListFilledASync();
         var dataResult = quests.Any(q => q.qid==testQid);
@@ -99,7 +86,7 @@ public class DataTest
     [InlineData(1, false)]
     public async void TestDataFilter_Unfilled(int testQid, bool testResult)
     {
-        var qs = CreateService(); 
+        var qs = new QuestDataHelper().CreateService(); 
 
         var quests = await qs.ListUnfilledAsync();
         var dataResult = quests.Any(q => q.qid==testQid);

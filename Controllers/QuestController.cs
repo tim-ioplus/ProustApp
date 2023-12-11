@@ -25,7 +25,7 @@ public class QuestController : ControllerBase
         try
         {
             var quest = await _questService.ReadAsync(int.Parse(id));
-            if(quest==null) return NotFound("Data with id {id} not found.");
+            if(quest==null) return NotFound("Data with id {"+id+"} not found.");
             
             return Ok(quest);
         }

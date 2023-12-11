@@ -4,6 +4,20 @@ namespace ProustApp.Services;
 public class QuestDataHelper
 {
      #region 'Data Helper'
+
+    public QuestsService CreateService()
+    {
+        var s = new QuestStoreDatabaseSettings
+        {
+            ConnectionString = "mongodb://localhost:27017",
+            DatabaseName = "ProustApp",
+            QuestsCollectionName = "Quests"
+        };
+
+        var qs = new QuestsService(s);
+
+        return qs;
+    }
     
     public List<Questionnaire> Get()
     {
