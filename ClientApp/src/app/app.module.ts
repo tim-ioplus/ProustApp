@@ -8,44 +8,45 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 
-//import { QuestionnaireCreateComponent } from './questionnairecreate/questionnairecreate.component';
-import { QuestionnaireDetailComponent } from './questionnairedetail/questionnairedetail.component';
-//import { QuestionnaireEditComponent }   from './questionnaireedit/questionnaireedit.component'; 
-import { QuestionnaireFillComponent }   from './questionnairefill/questionnairefill.component';
-//import { QuestionnaireChooseComponent } from './questionnairechoose/questionnairechoose.component';
-//import { QuestionnaireListComponent }   from './questionnairelist/questionnairelist.component';
+
+import { QuestDetailComponent } from './questdetail/questdetail.component';
+//import { questEditComponent }   from './questedit/questedit.component'; 
+import { QuestFillComponent }   from './questfill/questfill.component';
+//import { questChooseComponent } from './questchoose/questchoose.component';
+//import { questListComponent }   from './questlist/questlist.component';
 import { AboutComponent }               from './about/about.component';
 import { ContactComponent }             from './about/contact.component';
 import { ImprintComponent }             from './about/imprint.component';
+import { QuestCreateComponent } from './questcreate/questcreate.component';
 
 const routes: Routes = [
   //
   { path: '', component: HomeComponent, pathMatch: 'full' },
   //
-  // Lists new or filled out Questionnaires 
+  // Lists new or filled out quests 
   /*
-  { path: 'questionnaires', component: QuestionnaireListComponent },
-  { path: 'questionnaires/list', component: QuestionnaireListComponent },
-  { path: 'questionnaires/choose', component: QuestionnaireChooseComponent },
+  { path: 'quests', component: questListComponent },
+  { path: 'quests/list', component: questListComponent },
+  { path: 'quests/choose', component: questChooseComponent },
   */
   // 
-  // View a Questionnaire, either blank or filled out
-  { path: 'questionnaires/:id', component: QuestionnaireDetailComponent },
-  { path: 'quest/read/:id', component: QuestionnaireDetailComponent },
+  // View a quest, either blank or filled out
+  { path: 'quests/:id', component: QuestDetailComponent },
+  { path: 'quest/read/:id', component: QuestDetailComponent },
   //
-  // Create a new Questionnaire
-  // { path: 'questionnaires/create', component: QuestionnaireCreateComponent },
+  // Create a new quest
+   { path: 'quests/create', component: QuestCreateComponent },
   //
-  // Edit an existing Questionnaire
-  // { path: 'questionnaires/edit/:id', component: QuestionnaireEditComponent },
+  // Edit an existing quest
+  // { path: 'quests/edit/:id', component: questEditComponent },
   //
-  // Fill out an existing Questionnaire
-  { path: 'quest/fill/:id', component: QuestionnaireFillComponent },
+  // Fill out an existing quest
+  { path: 'quest/fill/:id', component: QuestFillComponent },
   //
-  // Info about Questionnaire
+  // Info about quest
   { path: 'about', component: AboutComponent },
   //
-  // Contact about Questionnaire
+  // Contact about quest
   { path: 'contact', component: ContactComponent },
   //
   // lawly required Info
@@ -57,13 +58,13 @@ const routes: Routes = [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    QuestionnaireDetailComponent,
-    QuestionnaireFillComponent
+    QuestDetailComponent,
+    QuestFillComponent
     /*
-    QuestionnaireListComponent,
-    QuestionnaireCreateComponent,
-    QuestionnaireEditComponent,
-    QuestionnaireChooseComponent
+    questListComponent,
+    questCreateComponent,
+    questEditComponent,
+    questChooseComponent
     */
   ],
   imports: [

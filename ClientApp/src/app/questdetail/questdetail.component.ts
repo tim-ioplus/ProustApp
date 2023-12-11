@@ -8,13 +8,13 @@ import { Dialog } from "../Dialog";
 import { QuestService } from "../QuestService";
 
 @Component({
-    selector: 'app-questionnairedetail',
-    templateUrl: './questionnairedetail.component.html'
+    selector: 'app-questdetail',
+    templateUrl: './questdetail.component.html'
  })
  
- export class QuestionnaireDetailComponent
+ export class QuestDetailComponent
  {    
-    public questionnaire: Quest = 
+    public quest: Quest = 
     {
         id: 0,
         author: '',
@@ -23,7 +23,7 @@ import { QuestService } from "../QuestService";
         dialogs:  new Map<string, string>()
      }
 
-    public questionnaireAmountQuestions: number = 0; 
+    public questAmountQuestions: number = 0; 
     public dialogx: Dialog[] = [];
     public mybaseUrl = 'BASE_URL';
 
@@ -35,17 +35,17 @@ import { QuestService } from "../QuestService";
         new QuestService(httpc, baseUrl).Read(id)
         .subscribe(result => 
             {
-                this.questionnaire = result;                
+                this.quest = result;                
 
-                for (const [key, value] of Object.entries(this.questionnaire.dialogs)) 
+                for (const [key, value] of Object.entries(this.quest.dialogs)) 
                 {
-                    this.questionnaireAmountQuestions++;
+                    this.questAmountQuestions++;
                     
                     var dx: Dialog = 
                     {
                         question: key,
                         answer: value,
-                        number: this.questionnaireAmountQuestions
+                        number: this.questAmountQuestions
                     };
                     
                     this.dialogx.push(dx);

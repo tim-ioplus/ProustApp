@@ -19,9 +19,9 @@ export class QuestService
     }
 
    
-    public Create(questionnaire: Quest): Observable<number> 
+    public Create(quest: Quest): Observable<number> 
     {
-        return this.httpClient.post<number>(this.fullUrl, questionnaire);
+        return this.httpClient.post<number>(this.fullUrl, quest);
     }
 
     public Read(id: string): Observable<Quest> 
@@ -31,9 +31,9 @@ export class QuestService
         return this.httpClient.get<Quest>(resourceUrl);
     }
 
-    public Update(questionnaire: Quest): Observable<boolean> 
+    public Update(quest: Quest): Observable<boolean> 
     {
-        return this.httpClient.put<boolean>(this.fullUrl, questionnaire);
+        return this.httpClient.put<boolean>(this.fullUrl, quest);
     }
 
     public Delete(id: number): Observable<boolean> 
@@ -43,9 +43,9 @@ export class QuestService
     }
 
     // 
-    // Gets List-View of Questionnaires 
-    // 1. 'choose' empty Questionnaires 
-    // 2. 'read' filled out Questionnaires  
+    // Gets List-View of quests 
+    // 1. 'choose' empty quests 
+    // 2. 'read' filled out quests  
     // 
     public List(datafilter: string = ''): Observable<Quest[]>  
     {
@@ -68,17 +68,17 @@ export class QuestService
     GetFromDOM(document: any) : Observable<Quest> 
     {
         return new Observable<Quest>((observer) => {          
-            var questionnaireIdElement = <HTMLInputElement> document.getElementsByName('questionnaire-id')[0];
-            var questionnaireAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-author')[0];
-            var questionnaireTopicElement = <HTMLInputElement> document.getElementsByName('questionnaire-topic')[0];
-            var questionnaireResponseAuthorElement = <HTMLInputElement> document.getElementsByName('questionnaire-responseauthor')[0];
+            var questIdElement = <HTMLInputElement> document.getElementsByName('quest-id')[0];
+            var questAuthorElement = <HTMLInputElement> document.getElementsByName('quest-author')[0];
+            var questTopicElement = <HTMLInputElement> document.getElementsByName('quest-topic')[0];
+            var questResponseAuthorElement = <HTMLInputElement> document.getElementsByName('quest-responseauthor')[0];
 
-            var newquestionnaire: Quest = 
+            var newquest: Quest = 
             {
-                id: parseInt(questionnaireIdElement.value),
-                author: questionnaireAuthorElement.value,
-                topic: questionnaireTopicElement.value,
-                responseAuthor: questionnaireResponseAuthorElement.value,
+                id: parseInt(questIdElement.value),
+                author: questAuthorElement.value,
+                topic: questTopicElement.value,
+                responseAuthor: questResponseAuthorElement.value,
                 dialogs:  new Map<string, string>()
             }
 
@@ -93,10 +93,10 @@ export class QuestService
                 var questionElement = <HTMLTextAreaElement>questions[index];
                 var questionText = questionElement.value;
 
-                newquestionnaire.dialogs.set(questionText, answerText);
+                newquest.dialogs.set(questionText, answerText);
             }
 
-            observer.next(newquestionnaire);
+            observer.next(newquest);
 
             observer.complete();
         });        

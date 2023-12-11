@@ -2,23 +2,24 @@ import { Component, Inject } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Quest } from "../Quest";
 import { QuestService } from "../QuestService";
+import {RouterModule} from '@angular/router';
 
 @Component({
-    selector: 'app-questionnairelist',
-    templateUrl: './questionnairelist.component.html'
+    selector: 'app-questchoose',
+    templateUrl: './questchoose.component.html'
  })
  
- export class QuestionnaireListComponent
+ export class QuestChooseComponent
  {
-   public questionnaires: Quest[] | undefined;
+   public quests: Quest[] | undefined;
 
    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string)
    {
-      new QuestService(http, baseUrl).ListToRead()
+      new QuestService(http, baseUrl).ListToFill()
       .subscribe(result => 
          {
-             this.questionnaires = result;
-             console.log(this.questionnaires);
+             this.quests = result;
+             console.log(this.quests);
          }, 
          error => console.error(error));
    }

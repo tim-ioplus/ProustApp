@@ -2,18 +2,18 @@
 
 <p>This component loads Quests data from the server.</p>
 
-<p *ngIf="!questionnaire"><em>Loading...</em></p>
+<p *ngIf="!quest"><em>Loading...</em></p>
 
 <hr>
 <form id="questForm" (ngSubmit)="onSubmit()">
   <fieldset>
     <!-- @todo Titel und Author als parm-->
-    <legend>Prousts own Questionnaire</legend>
-    <div name="questionnaire-metadata">
-    <input name="questionnaire-id" type="text" value="{{questionnaire.id}}" />, 
-    <input name="questionnaire-author" type="text" value="{{questionnaire.author}}" />
-    <input name="questionnaire-topic" type="text" value="{{questionnaire.topic}}" />
-    <input name="questionnaire-responseauthor" type="text" value="{{questionnaire.responseAuthor}}" />
+    <legend>Prousts own quest</legend>
+    <div name="quest-metadata">
+    <input name="quest-id" type="text" value="{{quest.id}}" />, 
+    <input name="quest-author" type="text" value="{{quest.author}}" />
+    <input name="quest-topic" type="text" value="{{quest.topic}}" />
+    <input name="quest-responseauthor" type="text" value="{{quest.responseAuthor}}" />
     <br>
     </div>
     <div name="questions">

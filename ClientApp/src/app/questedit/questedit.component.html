@@ -1,16 +1,16 @@
-<p *ngIf="!questionnaire"><em>Questionnaire Data couldnt be loaded so far. Loading...</em></p>
+<p *ngIf="!quest"><em>quest Data couldnt be loaded so far. Loading...</em></p>
 <p *ngIf="!dialogx"><em>Dialog Data couldnt be loaded so far. Loading...</em></p>
 
-<h1 id="tableLabel">Edit: {{ questionnaire.topic }}</h1>
+<h1 id="tableLabel">Edit: {{ quest.topic }}</h1>
 
 <form id="questForm" (ngSubmit)="onSubmit()">
   <fieldset>
-    <legend>Edit the Questionnaire</legend>
-    <div name="questionnaire-metadata">
-    <input name="questionnaire-id" type="text" value="{{questionnaire.id}}" />, 
-    <input name="questionnaire-author" type="text" value="{{questionnaire.author}}" />
-    <input name="questionnaire-topic" type="text" value="{{questionnaire.topic}}" />
-    <input name="questionnaire-responseauthor" type="text" value="{{questionnaire.responseAuthor}}" />
+    <legend>Edit the quest</legend>
+    <div name="quest-metadata">
+    <input name="quest-id" type="text" value="{{quest.id}}" />, 
+    <input name="quest-author" type="text" value="{{quest.author}}" />
+    <input name="quest-topic" type="text" value="{{quest.topic}}" />
+    <input name="quest-responseauthor" type="text" value="{{quest.responseAuthor}}" />
     <br>
     </div>
     <div style="margin-top:24px;" *ngFor="let dialog of dialogx">

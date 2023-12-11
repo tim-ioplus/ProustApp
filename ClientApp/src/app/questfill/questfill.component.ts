@@ -8,13 +8,13 @@ import { Dialog } from "../Dialog";
 
 
 @Component({
-    selector: 'app-questionnairefill',
-    templateUrl: './questionnairefill.component.html'
+    selector: 'app-questfill',
+    templateUrl: './questfill.component.html'
  })
  
- export class QuestionnaireFillComponent
+ export class QuestFillComponent
  {
-    public questionnaire: Quest = 
+    public quest: Quest = 
     {
         id: 0,
         author: '',
@@ -23,7 +23,7 @@ import { Dialog } from "../Dialog";
         dialogs:  new Map<string, string>()  
     }
 
-    public questionnaireAmountQuestions: number = 0; 
+    public questAmountQuestions: number = 0; 
     public dialogx: Dialog[] = [];
     public mybaseUrl = 'BASE_URL';
     http: any;
@@ -41,18 +41,18 @@ import { Dialog } from "../Dialog";
         new QuestService(httpc, baseUrl).Read(id)
         .subscribe(result => 
         {
-            this.questionnaire = result;
+            this.quest = result;
             
 
-            for (const [key, value] of Object.entries(this.questionnaire.dialogs)) 
+            for (const [key, value] of Object.entries(this.quest.dialogs)) 
             {
-                this.questionnaireAmountQuestions++;
+                this.questAmountQuestions++;
                 
                 var dx: Dialog = 
                 {
                     question: key,
                     answer: '',
-                    number: this.questionnaireAmountQuestions
+                    number: this.questAmountQuestions
                 };
                 
                 this.dialogx.push(dx);
@@ -66,12 +66,12 @@ import { Dialog } from "../Dialog";
     onSubmit():void 
     {
         new QuestService(this.http, this.mybaseUrl).GetFromDOM(document)
-        .subscribe(newquestionnaire =>{
-            new QuestService(this.http, this.mybaseUrl).Create(newquestionnaire)
+        .subscribe(newquest =>{
+            new QuestService(this.http, this.mybaseUrl).Create(newquest)
             .subscribe(
                 (result: number) => 
                 {
-                    this.router.navigate(['questionnaire', result]);                           
+                    this.router.navigate(['quest', result]);                           
                 }, 
                 (error: any) => 
                     console.log(error)
@@ -82,7 +82,7 @@ import { Dialog } from "../Dialog";
     public getDictionaryKeys()
     {
         var mkeys: string[] = []; 
-        var mkeys = Object.getOwnPropertyNames(this.questionnaire.dialogs);
+        var mkeys = Object.getOwnPropertyNames(this.quest.dialogs);
         return mkeys;
     }
  }

@@ -7,13 +7,13 @@ import { Quest } from "../Quest";
 import { QuestService } from "../QuestService";
 
 @Component({
-    selector: 'app-questionnairecreate',
-    templateUrl: './questionnairecreate.component.html'
+    selector: 'app-questcreate',
+    templateUrl: './questcreate.component.html'
  })
  
- export class QuestionnaireCreateComponent
+ export class QuestCreateComponent
  {    
-    public questionnaire: Quest = 
+    public quest: Quest = 
     {
         id: 0,
         author: '',
@@ -31,18 +31,18 @@ import { QuestService } from "../QuestService";
         this.http = httpc;
         this.mybaseUrl = baseUrl;
         this.router = routerc;
-        // Do not laod questionnaire data, its going to be created here        
+        // Do not laod quest data, its going to be created here        
     }
 
     onSubmit():void 
     {
         new QuestService(this.http, this.mybaseUrl).GetFromDOM(document)
-        .subscribe(newquestionnaire =>{
-            new QuestService(this.http, this.mybaseUrl).Create(newquestionnaire)
+        .subscribe(newquest =>{
+            new QuestService(this.http, this.mybaseUrl).Create(newquest)
             .subscribe(
                 (result: number) => 
                 {
-                    this.router.navigate(['questionnaire', result]);                           
+                    this.router.navigate(['quest', result]);                           
                 }, 
                 (error: any) => 
                     console.log(error)
@@ -53,7 +53,7 @@ import { QuestService } from "../QuestService";
     public getDictionaryKeys()
     {
         var mkeys: string[] = []; 
-        var mkeys = Object.getOwnPropertyNames(this.questionnaire.dialogs);
+        var mkeys = Object.getOwnPropertyNames(this.quest.dialogs);
         return mkeys;
     }
 }

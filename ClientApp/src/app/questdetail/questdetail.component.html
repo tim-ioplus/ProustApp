@@ -1,16 +1,16 @@
 <div class="" style="border:1px solid black;">
 
-<p *ngIf="!questionnaire"><em>Questionnaire Data couldnt be loaded so far. Loading...</em></p>
+<p *ngIf="!quest"><em>quest Data couldnt be loaded so far. Loading...</em></p>
 <p *ngIf="!dialogx"><em>Dialog Data couldnt be loaded so far. Loading...</em></p>
 
-<h1 id="tableLabel">Read: {{ questionnaire.topic }}</h1>
+<h1 id="tableLabel">Read: {{ quest.topic }}</h1>
 
 <table class="questmetadata" style="border:1px solid black;" >
   <tr>
-    <td style="width:10%"># {{ questionnaire.id }}</td>
-    <td style="width:20%">{{ questionnaireAmountQuestions }} Questions</td>
-    <td style="width:30%">By: {{ questionnaire.author }} </td>
-    <td style="width:30%">For: {{ questionnaire.responseAuthor }}</td>
+    <td style="width:10%"># {{ quest.id }}</td>
+    <td style="width:20%">{{ questAmountQuestions }} Questions</td>
+    <td style="width:30%">By: {{ quest.author }} </td>
+    <td style="width:30%">For: {{ quest.responseAuthor }}</td>
     <td style="width:auto;"><button><a class="" onclick="share();">Share</a></button></td>
   </tr>
 </table>

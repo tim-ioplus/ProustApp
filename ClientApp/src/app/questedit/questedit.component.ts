@@ -8,13 +8,13 @@ import { Quest } from "../Quest";
 import { Dialog } from "../Dialog";
 
 @Component({
-    selector: 'app-questionnaireedit',
-    templateUrl: './questionnaireedit.component.html'
+    selector: 'app-questedit',
+    templateUrl: './questedit.component.html'
  })
  
- export class QuestionnaireEditComponent
+ export class questEditComponent
  {    
-    public questionnaire: Quest = 
+    public quest: Quest = 
     {
         id: 0,
         author: '',
@@ -28,7 +28,7 @@ import { Dialog } from "../Dialog";
     router: Router;
 
     public dialogx: Dialog[] = [];
-    public questionnaireAmountQuestions: number = 0; 
+    public questAmountQuestions: number = 0; 
     
     constructor(httpc: HttpClient, @Inject('BASE_URL') baseUrl: string, private routerc: Router)
     {
@@ -42,16 +42,16 @@ import { Dialog } from "../Dialog";
         new QuestService(this.http, this.mybaseUrl).Read(id)
         .subscribe(
             result => {
-                this.questionnaire = result;
+                this.quest = result;
                 
-                for (const [key, value] of Object.entries(this.questionnaire.dialogs)) 
+                for (const [key, value] of Object.entries(this.quest.dialogs)) 
                 {
-                    this.questionnaireAmountQuestions++;
+                    this.questAmountQuestions++;
                     var dx: Dialog = 
                     {
                         question: key,
                         answer: value,
-                        number: this.questionnaireAmountQuestions
+                        number: this.questAmountQuestions
                     };
                     
                     this.dialogx.push(dx);
@@ -63,12 +63,12 @@ import { Dialog } from "../Dialog";
     onSubmit():void 
     {
         new QuestService(this.http, this.mybaseUrl).GetFromDOM(document)
-        .subscribe((questionnaire: Quest) => 
+        .subscribe((quest: Quest) => 
             {
-                new QuestService(this.http, this.mybaseUrl).Update(questionnaire)
+                new QuestService(this.http, this.mybaseUrl).Update(quest)
                 .subscribe((updateResult : boolean) => 
                 {
-                   this.router.navigate(['quests', questionnaire.id]);
+                   this.router.navigate(['quests', quest.id]);
                 }, error => console.log(error))
             },
             error => console.log(error));
@@ -77,7 +77,7 @@ import { Dialog } from "../Dialog";
     public getDictionaryKeys()
     {
         var mkeys: string[] = []; 
-        var mkeys = Object.getOwnPropertyNames(this.questionnaire.dialogs);
+        var mkeys = Object.getOwnPropertyNames(this.quest.dialogs);
         return mkeys;
     }
 }
