@@ -8,7 +8,9 @@ public class QuestsService
 {
     private readonly IMongoCollection<Questionnaire> _questCollection;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public QuestsService(IOptions<QuestStoreDatabaseSettings> questStoreDatabaseSettings)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
         new QuestsService(questStoreDatabaseSettings.Value);
     }

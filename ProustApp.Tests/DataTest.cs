@@ -72,13 +72,13 @@ public class DataTest
         Assert.True(qx != null);
         Assert.NotNull(qx);
 
-        var dataQuid = qx.qid;
+        var dataQuid = qx?.qid;
         Assert.True(dataQuid.Equals(testQid));
 
-        Assert.NotNull(qx._objectId);
-        Assert.NotNull(qx.Topic);
-        Assert.NotNull(qx.Author);
-        Assert.NotNull(qx.Dialogs);         
+        Assert.NotNull(qx?._objectId);
+        Assert.NotNull(qx?.Topic);
+        Assert.NotNull(qx?.Author);
+        Assert.NotNull(qx?.Dialogs);         
     }
 
     [Theory]
