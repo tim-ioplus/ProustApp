@@ -7,7 +7,7 @@ namespace ProustApp.Domain;
 /// Domain Class for Questionnaire Data in Document Format 
 /// </summary>
 /// <see cref="../Concept/Domain/document.json"/>
-public class Questionnaire
+public class Quest
 {
     /// <summary>
     /// Unique Identifier for Questionnaire

@@ -43,7 +43,7 @@ public class QuestController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(Questionnaire newQuest)
+    public async Task<IActionResult> Post(Quest newQuest)
     {
         try
         {
@@ -58,7 +58,7 @@ public class QuestController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> Update(string id, Questionnaire updatedQuest)
+    public async Task<ActionResult> Update(string id, Quest updatedQuest)
     {
         var questToUpdate = await _questService.ReadAsync(int.Parse(id));
 

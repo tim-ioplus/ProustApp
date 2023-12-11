@@ -29,7 +29,7 @@ public class ControllerTest
         Assert.NotNull(type.Value);
         Assert.Equal(type.StatusCode, StatusCodes.Status200OK);
         
-        var payload = type.Value as Questionnaire;
+        var payload = type.Value as Quest;
         Assert.NotNull(payload);
     }
 
@@ -75,7 +75,7 @@ public class ControllerTest
         Assert.NotNull(type.Value);
         Assert.Equal(type.StatusCode, StatusCodes.Status200OK);
         
-        var payload = type.Value as List<Questionnaire>;
+        var payload = type.Value as List<Quest>;
         Assert.NotNull(payload);
 
         var anyWithoutResponse = payload.Any(q => string.IsNullOrEmpty(q.ResponseAuthor));
@@ -99,7 +99,7 @@ public class ControllerTest
         Assert.NotNull(type.Value);
         Assert.Equal(type.StatusCode, StatusCodes.Status200OK);
         
-        var payload = type.Value as List<Questionnaire>;
+        var payload = type.Value as List<Quest>;
         Assert.NotNull(payload);
 
         var anyWithoutResponse = payload.Any(q => string.IsNullOrEmpty(q.ResponseAuthor));

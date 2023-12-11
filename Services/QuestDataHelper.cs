@@ -19,9 +19,9 @@ public class QuestDataHelper
         return qs;
     }
     
-    public List<Questionnaire> Get()
+    public List<Quest> Get()
     {
-        var mockData = new List<Questionnaire>
+        var mockData = new List<Quest>
         {
             GetMockData("1"),
             GetMockData("2"),
@@ -33,11 +33,11 @@ public class QuestDataHelper
     }
     
 
-    public Questionnaire GetMockData(string questionnaireId)
+    public Quest GetMockData(string questionnaireId)
     {
         if(questionnaireId=="1") 
         {
-            var questionnaire = new Questionnaire
+            var questionnaire = new Quest
             {
                 qid = 1,
                 Author = "Marcel Proust",
@@ -71,7 +71,7 @@ public class QuestDataHelper
         }
         if(questionnaireId=="2") 
         {
-            var questionnaire = new Questionnaire
+            var questionnaire = new Quest
             {
                 qid = 2,
                 Author = "Marcel Proust",
@@ -107,7 +107,7 @@ public class QuestDataHelper
         
         else if(questionnaireId=="3") 
         {
-            var questionnaire = new Questionnaire
+            var questionnaire = new Quest
             {
                 qid = 3,
                 Author = "George Plimpton",
@@ -125,7 +125,7 @@ public class QuestDataHelper
         }
         else if(questionnaireId=="4") 
         {
-            var questionnaire = new Questionnaire
+            var questionnaire = new Quest
             {
                 qid = 4,
                 Author = "George Plimpton",
