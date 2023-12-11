@@ -38,8 +38,8 @@ public class QuestController : ControllerBase
     [HttpGet("list/{filter}")]
     public async Task<IActionResult> List(string filter)
     {   
-        var questionnaires = await _questService.ListAsync(filter);
-        return Ok(questionnaires);        
+        var quests = await _questService.ListAsync(filter);
+        return Ok(quests);        
     }
 
     [HttpPost]

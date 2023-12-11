@@ -4,13 +4,13 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace ProustApp.Domain;
 
 /// <summary>
-/// Domain Class for Questionnaire Data in Document Format 
+/// Domain Class for Quest Data in Document Format 
 /// </summary>
 /// <see cref="../Concept/Domain/document.json"/>
 public class Quest
 {
     /// <summary>
-    /// Unique Identifier for Questionnaire
+    /// Unique Identifier for Quest
     /// </summary>
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]

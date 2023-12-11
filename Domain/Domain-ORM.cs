@@ -6,9 +6,9 @@ namespace ProustApp.DomainORM;
 /// Combines several Domain Classes for a simpler Front-End View. 
 /// </summary>
 [Obsolete("Use Non ORM Domain Classes")]
-public class Questionnaire
+public class quest
 {
-    public QuestionnaireMetadata? Metadata {get; set;}
+    public questMetadata? Metadata {get; set;}
     public Survey? Survey {get; set;}
     public List<Dialog>? Dialogs {get;set;}
 }
@@ -17,7 +17,7 @@ public class Questionnaire
 /// Meta data of a Survey answered by an Author 
 /// </summary>
 [Obsolete("Use Non ORM Domain Classes")]
-public class QuestionnaireMetadata
+public class questMetadata
 {
     int id {get; set;}
     string? Author {get; set;}
@@ -59,13 +59,13 @@ public class Question
 }
 
 /// <summary>
-/// An answer to a Question from a Questionnaire
+/// An answer to a Question from a quest
 /// </summary>
 [Obsolete("Use Non ORM Domain Classes")]
 public class Answer
 {
     int Id {get; set;}
     int QuestionId {get; set;}
-    int QuestionnaireId {get;set;}
+    int questId {get;set;}
     string? Text {get; set;}
 }

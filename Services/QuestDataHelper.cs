@@ -33,11 +33,11 @@ public class QuestDataHelper
     }
     
 
-    public Quest GetMockData(string questionnaireId)
+    public Quest GetMockData(string questId)
     {
-        if(questionnaireId=="1") 
+        if(questId=="1") 
         {
-            var questionnaire = new Quest
+            var quest = new Quest
             {
                 qid = 1,
                 Author = "Marcel Proust",
@@ -67,11 +67,11 @@ public class QuestDataHelper
                 }
             };  
 
-            return questionnaire;
+            return quest;
         }
-        if(questionnaireId=="2") 
+        if(questId=="2") 
         {
-            var questionnaire = new Quest
+            var quest = new Quest
             {
                 qid = 2,
                 Author = "Marcel Proust",
@@ -102,12 +102,12 @@ public class QuestDataHelper
                 }
             };  
 
-            return questionnaire;
+            return quest;
         }
         
-        else if(questionnaireId=="3") 
+        else if(questId=="3") 
         {
-            var questionnaire = new Quest
+            var quest = new Quest
             {
                 qid = 3,
                 Author = "George Plimpton",
@@ -121,11 +121,11 @@ public class QuestDataHelper
                 }
             };  
 
-            return questionnaire;
+            return quest;
         }
-        else if(questionnaireId=="4") 
+        else if(questId=="4") 
         {
-            var questionnaire = new Quest
+            var quest = new Quest
             {
                 qid = 4,
                 Author = "George Plimpton",
@@ -140,7 +140,7 @@ public class QuestDataHelper
                 }
             };  
 
-            return questionnaire;
+            return quest;
         }
         else
         {
