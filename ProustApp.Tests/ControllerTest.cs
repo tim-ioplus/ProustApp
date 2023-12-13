@@ -78,7 +78,7 @@ public class ControllerTest
         var payload = type.Value as List<Quest>;
         Assert.NotNull(payload);
 
-        var anyWithoutResponse = payload.Any(q => string.IsNullOrEmpty(q.ResponseAuthor));
+        var anyWithoutResponse = payload?.Any(q => string.IsNullOrEmpty(q.ResponseAuthor));
         Assert.False(anyWithoutResponse);
     }
 
@@ -102,7 +102,7 @@ public class ControllerTest
         var payload = type.Value as List<Quest>;
         Assert.NotNull(payload);
 
-        var anyWithoutResponse = payload.Any(q => string.IsNullOrEmpty(q.ResponseAuthor));
+        var anyWithoutResponse = payload?.Any(q => string.IsNullOrEmpty(q.ResponseAuthor));
         Assert.True(anyWithoutResponse);
     }
 }

@@ -14,7 +14,7 @@ public class QuestDataHelper
             QuestsCollectionName = "Quests"
         };
 
-        var qs = new QuestsService(s);
+        var qs = new QuestsService(s, true);
 
         return qs;
     }

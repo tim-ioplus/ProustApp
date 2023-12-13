@@ -8,15 +8,17 @@ public class QuestsService
 {
     private readonly IMongoCollection<Quest> _questCollection;
 
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public QuestsService(IOptions<QuestStoreDatabaseSettings> questStoreDatabaseSettings)
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
-        new QuestsService(questStoreDatabaseSettings.Value);
+        var mongoClient = new MongoClient(questStoreDatabaseSettings.Value.ConnectionString);
+        var mongoDatabase = mongoClient.GetDatabase(questStoreDatabaseSettings.Value.DatabaseName);
+        _questCollection = mongoDatabase.GetCollection<Quest>(questStoreDatabaseSettings.Value.QuestsCollectionName);
     }
 
-    public QuestsService(QuestStoreDatabaseSettings questStoreDatabaseSettingValues)
+    public QuestsService(QuestStoreDatabaseSettings questStoreDatabaseSettingValues, bool forUnitTest = false)
     {
+        if(!forUnitTest) throw new Exception("Call Constructor only For UnitTesting");
+
         var mongoClient = new MongoClient(questStoreDatabaseSettingValues.ConnectionString);
         var mongoDatabase = mongoClient.GetDatabase(questStoreDatabaseSettingValues.DatabaseName);
         _questCollection = mongoDatabase.GetCollection<Quest>(questStoreDatabaseSettingValues.QuestsCollectionName);
