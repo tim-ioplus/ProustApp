@@ -20,7 +20,7 @@ import { QuestService } from "../QuestService";
         author: '',
         topic: '',
         responseAuthor: '',
-        dialogs:  new Map<string, string>()
+        dialogs:  ''
      }
 
     public questAmountQuestions: number = 0; 
@@ -35,23 +35,7 @@ import { QuestService } from "../QuestService";
         new QuestService(httpc, baseUrl).Read(id)
         .subscribe(result => 
             {
-                this.quest = result;                
-
-                for (const [key, value] of Object.entries(this.quest.dialogs)) 
-                {
-                    this.questAmountQuestions++;
-                    
-                    var dx: Dialog = 
-                    {
-                        question: key,
-                        answer: value,
-                        number: this.questAmountQuestions
-                    };
-                    
-                    this.dialogx.push(dx);
-                }
-
-                
+                this.quest = new QuestService(httpc, baseUrl).GetFromResult(result);
             }, 
             error => console.error(error));
     }

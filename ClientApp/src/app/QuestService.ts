@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Quest } from './Quest';
+import { Dialog } from './Dialog';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,6 @@ export class QuestService
         this.httpClient = http;
         this.fullUrl = baseUrl + this.resourceFragment;
     }
-
    
     public Create(quest: Quest): Observable<number> 
     {
@@ -62,6 +62,39 @@ export class QuestService
         return this.List("read");
     }
 
+
+    GetFromResult(result: Quest )
+    {
+        var questAmountQuestions = 0;
+        var dialogx: Dialog[] = [];
+
+        for(var i=0;i< result.dialogs.length;i++)
+        {
+            var d = result.dialogs[i]; 
+            if(d != undefined) 
+            {
+                var q = d.question; 
+                var a = d.answer; 
+                console.log(q + " - " + a);
+
+                questAmountQuestions++;
+            
+                var dx: Dialog = 
+                {
+                    question: q,
+                    answer: a,
+                    number: questAmountQuestions
+                };
+                
+                dialogx.push(dx);
+
+            }
+        }
+
+        result.dialogs = dialogx;
+
+        return result;
+    }
     //
     //
     //
@@ -79,19 +112,19 @@ export class QuestService
                 author: questAuthorElement.value,
                 topic: questTopicElement.value,
                 responseAuthor: questResponseAuthorElement.value,
-                dialogs:  new Map<string, string>()
+                dialogs:  new Map<string, string>() 
             }
 
-            var answers = document.getElementsByName('answer-text');
             var questions = document.getElementsByName('question-text');
+            var answers = document.getElementsByName('answer-text');            
                     
-            for (let index = 0; index < answers.length; index++)
+            for (let index = 0; index < questions.length; index++)
             {
-                var answerElement = <HTMLTextAreaElement>answers[index];
-                var answerText = answerElement.value;
-
                 var questionElement = <HTMLTextAreaElement>questions[index];
                 var questionText = questionElement.value;
+
+                var answerElement = <HTMLTextAreaElement>answers[index];
+                var answerText = answerElement.value;               
 
                 newquest.dialogs.set(questionText, answerText);
             }

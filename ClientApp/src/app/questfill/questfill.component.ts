@@ -36,31 +36,14 @@ import { Dialog } from "../Dialog";
         this.router = routerc;
         
         var splits = document.URL.split('/');
-        var id = splits[splits.length-1];         
+        var id = splits[splits.length-1];     
         
         new QuestService(httpc, baseUrl).Read(id)
         .subscribe(result => 
-        {
-            this.quest = result;
-            
-
-            for (const [key, value] of Object.entries(this.quest.dialogs)) 
             {
-                this.questAmountQuestions++;
-                
-                var dx: Dialog = 
-                {
-                    question: key,
-                    answer: '',
-                    number: this.questAmountQuestions
-                };
-                
-                this.dialogx.push(dx);
-            }
-
-            
-        }, 
-        error => console.error(error));
+                this.quest = new QuestService(httpc, baseUrl).GetFromResult(result);
+            }, 
+            error => console.error(error));
     }
 
     onSubmit():void 
@@ -78,11 +61,4 @@ import { Dialog } from "../Dialog";
             );
         }, (error: any) => console.log(error) );        
     } 
-
-    public getDictionaryKeys()
-    {
-        var mkeys: string[] = []; 
-        var mkeys = Object.getOwnPropertyNames(this.quest.dialogs);
-        return mkeys;
-    }
  }
