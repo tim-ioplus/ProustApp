@@ -1,3 +1,4 @@
+using System.Globalization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -43,11 +44,14 @@ public class Dialog
 {
     public string? Question  { get; set;}
     public string? Answer { get; set;}
+    public string? Number { get; set;}
 
-    public Dialog(string q, string a)
+    public Dialog(string q, string a, string n="")
     {
-        Question = q;
         Answer = a;
+        Number = n;
+        Question = q;
+        
     }
 }
 

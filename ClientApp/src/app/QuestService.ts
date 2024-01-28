@@ -83,7 +83,7 @@ export class QuestService
                 {
                     question: q,
                     answer: a,
-                    number: questAmountQuestions
+                    number: questAmountQuestions + ''
                 };
                 
                 dialogx.push(dx);
@@ -112,8 +112,10 @@ export class QuestService
                 author: questAuthorElement.value,
                 topic: questTopicElement.value,
                 responseAuthor: questResponseAuthorElement.value,
-                dialogs:  new Map<string, string>() 
+                dialogs: '',
             }
+
+            var dialogx: Dialog[] = [];
 
             var questions = document.getElementsByName('question-text');
             var answers = document.getElementsByName('answer-text');            
@@ -124,11 +126,14 @@ export class QuestService
                 var questionText = questionElement.value;
 
                 var answerElement = <HTMLTextAreaElement>answers[index];
-                var answerText = answerElement.value;               
+                var answerText = answerElement.value;
+                let dialog: Dialog = {question: questionText, answer:answerText, number: index + ''};
+                console.log(JSON.stringify(dialog));
 
-                newquest.dialogs.set(questionText, answerText);
+                dialogx.push(dialog);
             }
 
+            newquest.dialogs = dialogx;
             observer.next(newquest);
 
             observer.complete();

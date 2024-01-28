@@ -10,7 +10,7 @@
   <tr *ngFor="let quest of quests">
     <td> {{ quest.id }} </td><td> {{ quest.topic }} </td><td> {{ quest.author }} </td><td> {{ quest.responseAuthor }}</td>
     <td>
-        <a class="nav-link text-dark" [routerLink]="['/quest/read/', quest.id]">Read</a>
+        <a class="nav-link text-dark" routerLink="['/quest/read/', quest.id]">Read</a>
       </td>
   </tr>
 </table>

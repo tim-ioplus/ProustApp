@@ -50,7 +50,7 @@ import { Dialog } from "../Dialog";
                     var dx: Dialog = 
                     {
                         question: key,
-                        answer: value,
+                        answer: value + '',
                         number: this.questAmountQuestions
                     };
                     
