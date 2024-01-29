@@ -18,7 +18,7 @@ public class ControllerTest
         var qs = new QuestDataHelper().CreateService();
         Assert.NotNull(qs);
 
-        var controller = new QuestController(qs);
+        var controller = new QuestsController(qs);
         Assert.NotNull(controller);
 
         var result = await controller.Get(testQid);
@@ -41,7 +41,7 @@ public class ControllerTest
         var qs = new QuestDataHelper().CreateService();
         Assert.NotNull(qs);
 
-        var controller = new QuestController(qs);
+        var controller = new QuestsController(qs);
         Assert.NotNull(controller);
 
         var result = await controller.Get(testQid);
@@ -64,7 +64,7 @@ public class ControllerTest
         var qs = new QuestDataHelper().CreateService();
         Assert.NotNull(qs);
 
-        var controller = new QuestController(qs);
+        var controller = new QuestsController(qs);
         Assert.NotNull(controller);
 
         var result = await controller.List("read");
@@ -88,7 +88,7 @@ public class ControllerTest
         var qs = new QuestDataHelper().CreateService();
         Assert.NotNull(qs);
 
-        var controller = new QuestController(qs);
+        var controller = new QuestsController(qs);
         Assert.NotNull(controller);
 
         var result = await controller.List("fill");

@@ -6,7 +6,7 @@ import {RouterModule} from '@angular/router';
 
 @Component({
     selector: 'app-questchoose',
-    templateUrl: './questchoose.component.html'
+    templateUrl: './questschoose.component.html'
  })
  
  export class QuestChooseComponent

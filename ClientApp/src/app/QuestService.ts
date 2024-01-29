@@ -10,7 +10,7 @@ import { Dialog } from './Dialog';
 
 export class QuestService 
 {
-    private resourceFragment = 'api/quest';
+    private resourceFragment = 'api/quests';
     private httpClient: HttpClient;
     private fullUrl=''; 
 

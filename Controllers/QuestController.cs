@@ -10,11 +10,11 @@ namespace ProustApp.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 
-public class QuestController : ControllerBase
+public class QuestsController : ControllerBase
 {
     private readonly QuestsService _questService;
 
-    public QuestController(QuestsService questsService)
+    public QuestsController(QuestsService questsService)
     {
         _questService = questsService;
     }
