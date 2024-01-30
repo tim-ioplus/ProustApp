@@ -1,8 +1,9 @@
 export interface Quest
- {
-    id: number;
-    author: string;
-    topic: string;
-    responseAuthor: string;
-    dialogs: any;
- }
+{
+   qid: number; 
+   id: number;
+   author: string;
+   topic: string;
+   responseAuthor: string;
+   dialogs: any;
+}

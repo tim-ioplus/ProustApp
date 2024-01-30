@@ -17,6 +17,7 @@ import { Dialog } from "../Dialog";
     public quest: Quest = 
     {
         id: 0,
+        qid:0,
         author: '',
         topic: '',
         responseAuthor: '',

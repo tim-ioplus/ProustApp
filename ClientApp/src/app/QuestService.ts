@@ -109,6 +109,7 @@ export class QuestService
             var newquest: Quest = 
             {
                 id: parseInt(questIdElement.value),
+                qid: parseInt(questIdElement.value),
                 author: questAuthorElement.value,
                 topic: questTopicElement.value,
                 responseAuthor: questResponseAuthorElement.value,

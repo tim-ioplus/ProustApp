@@ -26,13 +26,13 @@ const routes: Routes = [
   // Lists new or filled out quests 
   
   { path: 'quests', component: QuestListComponent },
-  //{ path: 'quests/list', component: questListComponent },
+  //{ path: 'quests/list', component: QuestListComponent },
   //{ path: 'quests/choose', component: questChooseComponent },
 
   // 
   // View a quest, either blank or filled out
-  //{ path: 'quests/:id', component: QuestDetailComponent },
-  { path: 'quest/read/:id', component: QuestDetailComponent },
+  { path: 'quests/:id', component: QuestDetailComponent },
+  //{ path: 'quests/read/:id', component: QuestDetailComponent },
   //
   // Create a new quest
   // { path: 'quests/create', component: QuestCreateComponent },

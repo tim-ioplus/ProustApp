@@ -19,6 +19,7 @@ export class HomeComponent
   quest: Quest = 
   {
       id: 0,
+      qid: 0,
       author: '',
       topic: '',
       responseAuthor: '',
