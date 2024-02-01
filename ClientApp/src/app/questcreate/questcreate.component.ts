@@ -31,8 +31,7 @@ import { QuestService } from "../QuestService";
     {
         this.http = httpc;
         this.mybaseUrl = baseUrl;
-        this.router = routerc;
-        // Do not laod quest data, its going to be created here        
+        this.router = routerc;        
     }
 
     onSubmit():void 
